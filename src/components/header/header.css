@@ -1,0 +1,9 @@
+.header a,
+.header button { display: inline-block; font-size: 1rem; line-height: 1.4; padding: 1rem 20px; color: #8e8e8e; }
+.header a:hover,
+.header button:hover { color: #0363b7; }
+.logo { font-size: 1rem; font-weight: 400; }
+
+@media (min-width: 450px) {
+  .header { display: flex; }
+}
