@@ -13,7 +13,7 @@ const Account = ({ authUser }) => {
         <p className="ui-account-email">{authUser.email}</p>
       </div>
       <hr/>
-      <EditUser />
+      <EditUser user={authUser} />
     </div>
   )
 }

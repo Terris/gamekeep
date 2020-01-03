@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { auth } from '../../firebase';
+import Modal from '../ui/modal';
 
 const ReAuthenticateWithPassword = ({ user, open }) => {
   
-  const [modalOpen, setModalOpen] = useState(false);
+  const [modalOpen, setModalOpen] = useState(true);
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
   
@@ -23,7 +24,7 @@ const ReAuthenticateWithPassword = ({ user, open }) => {
   const onClose = () => { setModalOpen(false); }
   
   return (
-    <div className={modalOpen ? "open" : ""}>
+    <Modal open={modalOpen}>
       <h3>Please enter your password to continue.</h3>
       {message && <div className="message message-error">{message}</div>}
       <form onSubmit={onSubmit}>
@@ -39,10 +40,10 @@ const ReAuthenticateWithPassword = ({ user, open }) => {
         </div>
         <div className="field">
           <button onClick={onSubmit} className="btn">Submit</button>
-          <button onClick={onClose} className="btn btn-secondary" style={{marginLeft: "20px"}}>Cancel</button>
+          <button onClick={onClose} className="btn btn-cancel" style={{marginLeft: "20px"}}>Cancel</button>
         </div>
       </form>
-    </div>
+    </Modal>
   )
 };
 

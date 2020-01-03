@@ -1,0 +1,13 @@
+.ui-modal {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: #fffffff7;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+}
+.ui-modal.open { display: flex; }
+.ui-modal-inner { border: 1px solid #ccc; border-radius: 3px;  padding: 1rem 20px; }

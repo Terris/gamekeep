@@ -49,12 +49,20 @@ input[type="number"] {
   transition: border-color 0.2s ease;
 }
 input[type="number"] { width: auto; }
-
+/* focus */
 input[type="text"]:focus,
 input[type="email"]:focus,
 input[type="password"]:focus,
 input[type="number"]:focus {
   border-bottom: 1px solid #0f86ef;
+}
+/* disabled */
+input[type="text"]:disabled,
+input[type="email"]:disabled,
+input[type="password"]:disabled,
+input[type="number"]:disabled {
+  cursor: not-allowed;
+  color: #ccc;
 }
 
 /* Label
@@ -64,4 +72,4 @@ label { font-size: 0.8rem; font-weight: 700; color: #444; }
 
 /* Template
 ------------------------------------ */
-.header, .main, .footer { max-width: 1024px; margin: 0 auto; }
+.header, .main, .footer, .ui-modal-inner { max-width: 1024px; margin: 0 auto; }
