@@ -1,0 +1,50 @@
+/* Reset
+------------------------------------ */
+
+*,
+*:before,
+*:after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-overflow-scrolling: touch;
+}
+html, input, textarea, button { font-size: 16px; -webkit-font-smoothing: antialiased; }
+body { margin: 0; text-rendering: optimizeLegibility; }
+img  { width: 100% }
+svg  { max-height: 100% }
+
+/* Base
+------------------------------------ */
+
+body { font-family: sans-serif; font-size: 1rem; }
+h1,h2,h3,h4,h5,h6,p,ul,ol,figure,.field { line-height: 1.4; padding: 1rem 20px; }
+hr { border:none; border-bottom: 1px solid #ccc; margin: 1rem 20px; }
+
+/* Link
+------------------------------------ */
+
+a,button { color: #0363b7; text-decoration: none; transition: color 0.2s ease; cursor: pointer; }
+a:hover,button:hover { color: #0f86ef; }
+
+/* Button
+------------------------------------ */
+
+button { border: none; outline: none; background: transparent; }
+button.btn { padding: 10px 20px; color: #fff; background: #0363b7; transition: background-color 0.2s ease; }
+button.btn:hover { background: #0f86ef; }
+
+/* Input
+------------------------------------ */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"] {
+  width: 100%;
+  padding: 1rem 20px;
+  background: #f9f9f9;
+  border: 0px solid #f9f9f9;
+  font-size: 1rem;
+  outline: none;
+}
+input[type="number"] { width: auto; }
