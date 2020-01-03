@@ -1,5 +1,4 @@
 import React, { Fragment, useState } from 'react';
-import { auth } from '../../firebase';
 import { withRouter } from 'react-router-dom';
 import { routes } from '../../constants';
 import ReAuthenticateWithPassword from './ReAuthenticateWithPassword';

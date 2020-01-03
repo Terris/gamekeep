@@ -3,6 +3,7 @@ import { Switch, Route } from 'react-router-dom'
 import Header from '../header';
 import Home from '../home';
 import Dashboard from '../dashboard';
+import Friends from '../friends';
 import NoMatch from '../nomatch';
 import { SignUp } from '../auth';
 import { SignIn } from '../auth';
@@ -24,6 +25,7 @@ const App = () => {
           <Route exact path={routes.FORGOT_PASSWORD} component={ForgotPassword} />
           <Route exact path={routes.ACCOUNT} component={Account} />
           <Route exact path={routes.DASHBOARD} component={Dashboard} />
+          <Route exact path={routes.FRIENDS} component={Friends} />
           <Route component={NoMatch} />
         </Switch>
       </main>

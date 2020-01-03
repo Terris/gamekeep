@@ -24,6 +24,7 @@ const NavigationAuth = withRouter(
   ({ authUser, history }) => (
     <Fragment>
       <Link to={routes.DASHBOARD}>Dashboard</Link>
+      <Link to={routes.FRIENDS}>Friends</Link>
       <Link to={routes.ACCOUNT}>Account</Link>
       <button onClick={auth.signOut}>Sign Out</button>
     </Fragment>

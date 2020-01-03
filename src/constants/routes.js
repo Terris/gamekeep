@@ -7,4 +7,5 @@ export const routes = {
   ACCOUNT: '/account',
   ADMIN: '/admin',
   DASHBOARD: '/dashboard',
+  FRIENDS: '/friends',
 }
