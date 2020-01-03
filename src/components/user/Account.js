@@ -1,17 +1,20 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { withAuthorization } from '../session';
-
+import Avatar from '../ui/avatar';
 import EditUser from './EditUser';
+import './account.css';
 
 const Account = ({ authUser }) => {
   return (
-    <Fragment>
-      {!!authUser.photoURL && <img src={authUser.photoURL} alt="user avatar" /> }
-      <h2>{authUser.displayName}</h2>
-      <p>{authUser.email}</p>
+    <div className="ui-account">
+      <div className="ui-account-header">
+        {!!authUser.photoURL && <Avatar src={authUser.photoURL} alt={`${authUser.displayName}'s Avatar'`} wrapperClass={"ui-account-avatar"} /> }
+        <h2 className="ui-account-display-name">{authUser.displayName}</h2>
+        <p className="ui-account-email">{authUser.email}</p>
+      </div>
       <hr/>
       <EditUser />
-    </Fragment>
+    </div>
   )
 }
 

@@ -31,7 +31,7 @@ a:hover,button:hover { color: #0f86ef; }
 ------------------------------------ */
 
 button { border: none; outline: none; background: transparent; }
-button.btn { padding: 10px 20px; color: #fff; background: #0363b7; transition: background-color 0.2s ease; }
+button.btn { padding: 12px 20px; color: #fff; background: #0363b7; transition: background-color 0.2s ease; }
 button.btn:hover { background: #0f86ef; }
 
 /* Input
@@ -41,10 +41,27 @@ input[type="email"],
 input[type="password"],
 input[type="number"] {
   width: 100%;
-  padding: 1rem 20px;
+  padding: 1rem 10px;
   background: #f9f9f9;
-  border: 0px solid #f9f9f9;
+  border: 1px solid #f9f9f9;
   font-size: 1rem;
   outline: none;
+  transition: border-color 0.2s ease;
 }
 input[type="number"] { width: auto; }
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="number"]:focus {
+  border-bottom: 1px solid #0f86ef;
+}
+
+/* Label
+------------------------------------ */
+label { font-size: 0.8rem; font-weight: 700; color: #444; }
+
+
+/* Template
+------------------------------------ */
+.header, .main, .footer { max-width: 1024px; margin: 0 auto; }

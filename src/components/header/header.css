@@ -1,3 +1,4 @@
+.header { margin-bottom: 1rem; }
 .header a,
 .header button { display: inline-block; font-size: 1rem; line-height: 1.4; padding: 1rem 20px; color: #8e8e8e; }
 .header a:hover,

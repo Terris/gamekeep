@@ -29,19 +29,23 @@ const SignIn = ({ history }) => {
       {error && <div className="message message-error">{error}</div>}
       <form onSubmit={handleSubmit}>
         <div className="field">
+          <label for="email">Email</label>
           <input
             type="email"
             label='Email'
             name="email"
+            id="email"
             placeholder='Email'
             value={email}
             onChange={e => setEmail(e.currentTarget.value)} />
         </div>
         <div className="field">
+          <label for="password">Password</label>
           <input
             type="password"
             label='Password'
             name="password"
+            id="password"
             placeholder='Password'
             value={password}
             onChange={e => setPassword(e.currentTarget.value)} />
@@ -53,6 +57,8 @@ const SignIn = ({ history }) => {
       </form>
       <hr/>
       <p><button type='button' className="btn" onClick={signInWithGoogle}>Sign In with Google</button></p>
+      <hr/>
+      <p>Don't have an account? <Link to={routes.SIGN_UP}>Sign Up</Link></p>
     </div>
   )
 }

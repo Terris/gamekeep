@@ -1,0 +1,5 @@
+.ui-account { max-width: 600px; margin: 0 auto; }
+.ui-account .ui-account-header { text-align: center; }
+.ui-account .ui-account-avatar { padding-bottom: 0; }
+.ui-account .ui-account-display-name { padding-bottom: 0; }
+.ui-account .ui-account-email { padding-top: 0; }

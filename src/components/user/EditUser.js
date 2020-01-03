@@ -1,6 +1,5 @@
 import React, { Fragment, useState } from 'react';
 import { auth } from '../../firebase';
-
 import ReAuthenticateWithPassword from './ReAuthenticateWithPassword';
 
 const EditUser = () => {
@@ -40,22 +39,32 @@ const EditUser = () => {
     <Fragment>
       {message && <div className="message message-error">{message}</div>}
       <form onSubmit={onSubmit}>
-        <input
-          type="email"
-          label='Email'
-          name="email"
-          placeholder='Email'
-          value={email}
-          onChange={e => setEmail(e.currentTarget.value)} />
-        <input
-          type="text"
-          name="displayName"
-          placeholder='Display Name'
-          value={displayName}
-          onChange={e => setDisplayName(e.currentTarget.value)} />
-        <button type='submit'>Update</button>
+        <div className="field">
+          <label htmlFor="displayName">Display Name</label>
+          <input
+            type="text"
+            name="displayName"
+            id="displayName"
+            placeholder='Display Name'
+            value={displayName}
+            onChange={e => setDisplayName(e.currentTarget.value)} />
+        </div>
+        <div className="field">
+          <label htmlFor="email">Email</label>
+          <input
+            type="email"
+            label='Email'
+            name="email"
+            id="email"
+            placeholder='Email'
+            value={email}
+            onChange={e => setEmail(e.currentTarget.value)} />
+        </div>
+        <div className="field">
+          <button type='submit' className="btn">Update</button>
+        </div>
       </form>
-      <ReAuthenticateWithPassword open={reAuthWithPassword} user={user} />
+      {!!reAuthWithPassword && <ReAuthenticateWithPassword user={user} />}
     </Fragment>
   );
 }

@@ -24,19 +24,24 @@ const ReAuthenticateWithPassword = ({ user, open }) => {
   
   return (
     <div className={modalOpen ? "open" : ""}>
-      <h2>Please enter your password to continue.</h2>
+      <h3>Please enter your password to continue.</h3>
       {message && <div className="message message-error">{message}</div>}
       <form onSubmit={onSubmit}>
-        <input
-          type="password"
-          label='Password'
-          name="password"
-          placeholder='Password'
-          value={password}
-          onChange={e => { setPassword( e.currentTarget.value ) }} />
+        <div className="field">
+          <label htmlFor="password">Password</label>
+          <input
+            type="password"
+            label='Password'
+            name="password"
+            placeholder='Password'
+            value={password}
+            onChange={e => { setPassword( e.currentTarget.value ) }} />
+        </div>
+        <div className="field">
+          <button onClick={onSubmit} className="btn">Submit</button>
+          <button onClick={onClose} className="btn btn-secondary" style={{marginLeft: "20px"}}>Cancel</button>
+        </div>
       </form>
-      <button onClick={onSubmit}>Submit</button>
-      <button onClick={onClose}>Cancel</button>
     </div>
   )
 };
