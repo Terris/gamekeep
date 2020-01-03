@@ -3,12 +3,12 @@ import { Switch, Route } from 'react-router-dom'
 import Header from '../header';
 import Home from '../home';
 import Dashboard from '../dashboard';
-import Friends from '../friends';
 import NoMatch from '../nomatch';
 import { SignUp } from '../auth';
 import { SignIn } from '../auth';
 import { ForgotPassword } from '../auth';
 import { Account } from '../user';
+import { Friends } from '../friends';
 import { withAuthentication } from '../session';
 import { routes } from '../../constants';
 import './app.css';
