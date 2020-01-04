@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { db } from '../../firebase';
-import Modal from '../ui/modal';
+import { Message, Modal } from '../ui';
 
 const AddFriendBtn = ({ user }) => {
   const [modalOpen, setModalOpen] = useState();
@@ -9,7 +9,6 @@ const AddFriendBtn = ({ user }) => {
   
   const onSubmit = e => {
     e.preventDefault();
-    
     if (email !== "") {
       // search for user
       db.userByEmail(email).get()
@@ -51,7 +50,7 @@ const AddFriendBtn = ({ user }) => {
       <Modal open={modalOpen}>
         <div className="addfriend">
           <h3>Add a Friend</h3>
-          {!!message && <div className="message message-error">{message}</div>}
+          {message && <Message type="error" message={message} />}
           <form onSubmit={onSubmit}>
             <div className="field">
               <label htmlFor="displayName">Your Friend's Email</label>
@@ -64,7 +63,7 @@ const AddFriendBtn = ({ user }) => {
                 onChange={e => setEmail(e.currentTarget.value)} />
             </div>
             <div className="field">
-              <button onClick={onSubmit} className="btn">Submit</button>
+              <button onClick={onSubmit} type="submit" className="btn">Submit</button>
               <button onClick={onClose} className="btn btn-cancel" style={{marginLeft: "20px"}}>Cancel</button>
             </div>
           </form>

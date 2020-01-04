@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { auth } from '../../firebase';
-import Modal from '../ui/modal';
+import { Message, Modal } from '../ui';
 
 const ReAuthenticateWithPassword = ({ user, open }) => {
   
@@ -10,9 +10,7 @@ const ReAuthenticateWithPassword = ({ user, open }) => {
   
   const onSubmit = e => {
     e.preventDefault();
-    
     let credential = auth.getEmailAuthCredential(user.email, password);
-    
     user.reauthenticateWithCredential(credential).then(function() {
       setModalOpen(false);
     }).catch(function(error) {
@@ -26,7 +24,7 @@ const ReAuthenticateWithPassword = ({ user, open }) => {
   return (
     <Modal open={modalOpen}>
       <h3>Please enter your password to continue.</h3>
-      {message && <div className="message message-error">{message}</div>}
+      {message && <Message type="error" message={message} />}
       <form onSubmit={onSubmit}>
         <div className="field">
           <label htmlFor="password">Password</label>
@@ -39,7 +37,7 @@ const ReAuthenticateWithPassword = ({ user, open }) => {
             onChange={e => { setPassword( e.currentTarget.value ) }} />
         </div>
         <div className="field">
-          <button onClick={onSubmit} className="btn">Submit</button>
+          <button onClick={onSubmit} type="submit" className="btn">Submit</button>
           <button onClick={onClose} className="btn btn-cancel" style={{marginLeft: "20px"}}>Cancel</button>
         </div>
       </form>

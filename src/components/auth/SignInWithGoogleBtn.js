@@ -4,15 +4,16 @@ import { withRouter } from 'react-router-dom';
 import { routes } from '../../constants';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGoogle } from '@fortawesome/free-brands-svg-icons';
+import { Message } from '../ui';
 
 const SignInWithGoogleBtn = ({ history }) => {
   
-  const [error, setError] = useState("");
+  const [message, setMessage] = useState("");
   
   const createDbUser = (uid, email) => {
     db.createUser(uid, email)
     .then(() => history.push(routes.DASHBOARD))
-    .catch(error => setError(error.message))
+    .catch(error => setMessage(error.message))
   }
   
   const signInWithGoogle = () => {
@@ -24,12 +25,12 @@ const SignInWithGoogleBtn = ({ history }) => {
         history.push(routes.DASHBOARD)
       }
     })
-    .catch(error => setError(error.messsage))
+    .catch(error => setMessage(error.messsage))
   }
   
   return (
     <Fragment>
-      {error && <div className="message message-error">{error}</div>}
+      {message && <Message type="error" message={message} />}
       <button type='button' className="btn" onClick={signInWithGoogle}>
         <span style={{marginRight: "30px"}}><FontAwesomeIcon icon={faGoogle} /></span>
         Sign In with Google

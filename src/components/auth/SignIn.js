@@ -2,12 +2,13 @@ import React, { useState } from 'react';
 import { auth } from '../../firebase';
 import { withRouter, Link } from 'react-router-dom';
 import { routes } from '../../constants';
+import { Message } from '../ui';
 import SignInWithGoogleBtn from './SignInWithGoogleBtn';
 
 const SignIn = ({ history }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
+  const [message, setMessage] = useState("");
   
   const handleSubmit = event => {
     event.preventDefault();
@@ -15,16 +16,16 @@ const SignIn = ({ history }) => {
     .then(response => {
       history.push(routes.DASHBOARD)
     })
-    .catch(error => setError(error.message))
+    .catch(error => setMessage(error.message))
   }
 
   return (
     <div data-testid="page-signin" style={{ maxWidth: "360px", margin: "0 auto"}}>
       <h2>Sign In</h2>
-      {error && <div className="message message-error">{error}</div>}
-      <p><SignInWithGoogleBtn />
-      </p>
+      <p><SignInWithGoogleBtn /></p>
       <hr/>
+      {message && <Message type="error" message={message} />}
+      <p>Sign in with your email and password.</p>
       <form onSubmit={handleSubmit}>
         <div className="field">
           <label htmlFor="email">Email</label>

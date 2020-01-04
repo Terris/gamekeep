@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { auth, db } from '../../firebase';
 import { withRouter } from 'react-router-dom';
 import { routes } from '../../constants';
+import { Message } from '../ui';
 import SignInWithGoogleBtn from './SignInWithGoogleBtn';
 
 const SignUp = ({ history }) => {
@@ -9,12 +10,12 @@ const SignUp = ({ history }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
-  const [error, setError] = useState("");
+  const [message, setMessage] = useState("");
   
   const createDbUser = (uid, email) => {
     db.createUser(uid, email)
     .then(() => history.push(routes.DASHBOARD))
-    .catch(error => setError(error.message))
+    .catch(error => setMessage(error.message))
   }
   
   const handleSubmit = e => {
@@ -22,24 +23,24 @@ const SignUp = ({ history }) => {
     if (password === passwordConfirmation) {
       auth.createUserWithEmailAndPassword(email, password)
       .then(response => createDbUser(response.user.uid, response.user.email))
-      .catch(error => setError(error.message))
+      .catch(error => setMessage(error.message))
     } else {
-      setError("Passwords do not match.")
+      setMessage("Passwords do not match.")
     }
   }
 
   return (
     <div data-testid="page-signup" style={{ maxWidth: "360px", margin: "0 auto"}}>
       <h2>Sign Up</h2>
-      {error && <div className="message message-error">{error}</div>}
       <p><SignInWithGoogleBtn /></p>
       <hr/>
+      {message && <Message type="error" message={message} />}
+      <p>Sign up with your email and password.</p>
       <form onSubmit={handleSubmit}>
         <div className="field">
           <label htmlFor="email">Email</label>
           <input
             type="email"
-            label='Email'
             name="email"
             id="email"
             placeholder='Email'

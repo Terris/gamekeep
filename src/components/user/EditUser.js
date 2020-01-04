@@ -1,6 +1,7 @@
 import React, { Fragment, useState } from 'react';
 import { withRouter } from 'react-router-dom';
 import { routes } from '../../constants';
+import { Message } from '../ui';
 import ReAuthenticateWithPassword from './ReAuthenticateWithPassword';
 
 const EditUser = ({ history, user }) => {
@@ -36,8 +37,7 @@ const EditUser = ({ history, user }) => {
   
   return (
     <Fragment>
-      {message && <div className="message message-error">{message}</div>}
-      
+      {message && <Message type="error" message={message} />}
       <form onSubmit={onSubmit}>
         <div className="field">
           <label htmlFor="displayName">Display Name</label>

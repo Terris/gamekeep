@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Message } from '../ui';
 import { auth } from '../../firebase';
 
 const ForgotPassword = () => {
@@ -16,23 +17,29 @@ const ForgotPassword = () => {
   }
 
   return (
-    <div data-testid="page-forgot-password">
+    <div data-testid="page-forgot-password" style={{ maxWidth: "360px", margin: "0 auto"}}>
       <h1>Forgot Password</h1>
-      {message && <div className="message message-error">{message}</div>}
+      {message && <Message type="error" message={message} />}
       {submitted
         ? (
           <p>Thank you. Instructions have been sent to the email you provided.</p>
         ) : (
           <form onSubmit={handleSubmit}>
-            <p>Enter your email and we'll send you instrucitons for resetting your password.</p>
-            <input
-              type="text"
-              label='Email'
-              name="email"
-              placeholder='Email'
-              value={email}
-              onChange={e => setEmail(e.currentTarget.value)} />
-            <button type='submit'>Submit</button>
+            <p>Enter your email and we'll send you instructions for resetting your password.</p>
+            <div className="field">
+              <label htmlFor="email">Email</label>
+              <input
+                type="text"
+                label='Email'
+                name="email"
+                id="email"
+                placeholder='Email'
+                value={email}
+                onChange={e => setEmail(e.currentTarget.value)} />
+            </div>
+            <div className="field">
+              <button type='submit' className="btn">Submit</button>
+            </div>
           </form>
         )
       }
