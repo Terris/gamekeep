@@ -12,7 +12,7 @@ const SignInWithGoogleBtn = ({ history }) => {
   
   const createDbUser = (uid, email) => {
     db.createUser(uid, email)
-    .then(() => history.push(routes.DASHBOARD))
+    .then(() => history.push(routes.WELCOME))
     .catch(error => setMessage(error.message))
   }
   

@@ -10,7 +10,7 @@ import './header.css';
 
 const Header = (props) => (
   <header className="header" data-testid="comp-header">
-    <h1 className="logo">Gamekeep</h1>
+    <h1 className="logo">GameKeep</h1>
     <Drawer trigger={<FontAwesomeIcon icon={faBars} />}>
       <AuthUserContext.Consumer>
         {authUser =>
