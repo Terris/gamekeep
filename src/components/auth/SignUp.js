@@ -12,8 +12,8 @@ const SignUp = () => {
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
   const [message, setMessage] = useState("");
   
-  const createDbUser = (uid, email) => {
-    db.createUser(uid, email)
+  const createDbUser = (uid, displayName, email) => {
+    db.createUser(uid, displayName, email)
     .then(() => history.push(routes.WELCOME))
     .catch(error => setMessage(error.message))
   }
@@ -22,7 +22,7 @@ const SignUp = () => {
     e.preventDefault();
     if (password === passwordConfirmation) {
       auth.createUserWithEmailAndPassword(email, password)
-      .then(response => createDbUser(response.user.uid, response.user.email))
+      .then(response => createDbUser(response.user.uid, response.user.displayName, response.user.email))
       .catch(error => setMessage(error.message))
     } else {
       setMessage("Passwords do not match.")

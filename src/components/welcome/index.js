@@ -12,12 +12,17 @@ const Welcome = ({ authUser }) => {
   
   const onSubmit = (e) => {
     e.preventDefault();
-    authUser.updateProfile({displayName: displayName})
-      .then(function() {
-        history.push(routes.DASHBOARD);
-      }).catch(function(error) {
-        setMessage(error.message);
-      });
+    if ( displayName !== "" ) {
+      authUser.updateProfile({displayName: displayName})
+        .then(function() {
+          history.push(routes.DASHBOARD);
+        }).catch(function(error) {
+          setMessage(error.message);
+        });
+    } else {
+      setMessage("You must set a Display Name to continue.")
+    }
+    
   }
   
   return (
