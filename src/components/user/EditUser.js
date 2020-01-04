@@ -1,10 +1,11 @@
 import React, { Fragment, useState } from 'react';
-import { withRouter } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { routes } from '../../constants';
 import { Message } from '../ui';
 import ReAuthenticateWithPassword from './ReAuthenticateWithPassword';
 
-const EditUser = ({ history, user }) => {
+const EditUser = ({ user }) => {
+  let history = useHistory();
   const [message, setMessage] = useState('');
   const [email, setEmail] = useState(user.email);
   const [displayName, setDisplayName] = useState(user.displayName);
@@ -12,7 +13,6 @@ const EditUser = ({ history, user }) => {
   
   const onSubmit = (e) => {
     e.preventDefault();
-    
     if( displayName !== user.displayName ) {
       user.updateProfile({displayName: displayName})
         .then(function() {
@@ -71,4 +71,4 @@ const EditUser = ({ history, user }) => {
 }
   
 
-export default withRouter(EditUser);
+export default EditUser;

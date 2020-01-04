@@ -1,13 +1,14 @@
 import React, { Fragment, useState } from 'react';
 import { auth, db } from '../../firebase';
-import { withRouter } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { routes } from '../../constants';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGoogle } from '@fortawesome/free-brands-svg-icons';
 import { Message } from '../ui';
 
-const SignInWithGoogleBtn = ({ history }) => {
+const SignInWithGoogleBtn = () => {
   
+  let history = useHistory();
   const [message, setMessage] = useState("");
   
   const createDbUser = (uid, email) => {
@@ -39,4 +40,4 @@ const SignInWithGoogleBtn = ({ history }) => {
   )
 }
 
-export default withRouter(SignInWithGoogleBtn);
+export default SignInWithGoogleBtn;

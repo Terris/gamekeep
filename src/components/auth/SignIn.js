@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { auth } from '../../firebase';
-import { withRouter, Link } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 import { routes } from '../../constants';
 import { Message } from '../ui';
 import SignInWithGoogleBtn from './SignInWithGoogleBtn';
 
-const SignIn = ({ history }) => {
+const SignIn = () => {
+  
+  let history = useHistory();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
@@ -60,4 +62,4 @@ const SignIn = ({ history }) => {
   )
 }
 
-export default withRouter(SignIn);
+export default SignIn;
