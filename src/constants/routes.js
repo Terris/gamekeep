@@ -5,7 +5,6 @@ export const routes = {
   FORGOT_PASSWORD: '/forgotpassword',
   RESET_PASSWORD: '/resetpassword',
   ACCOUNT: '/account',
-  ADMIN: '/admin',
   WELCOME: '/welcome',
   DASHBOARD: '/dashboard',
   FRIENDS: '/friends',

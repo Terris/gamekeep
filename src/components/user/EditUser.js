@@ -13,19 +13,15 @@ const EditUser = ({ user }) => {
   
   const onSubmit = (e) => {
     e.preventDefault();
-    if( displayName !== user.displayName ) {
-      user.updateProfile({displayName: displayName})
-        .then(function() {
-          history.push(routes.ACCOUNT);
-        }).catch(function(error) {
-          setMessage(error.message);
-        });
+    if ( displayName !== user.displayName ) {
+      user.updateProfile({ displayName: displayName })
+        .then(() => { history.push(routes.ACCOUNT) })
+        .catch(error => setMessage(error.message));
     }
-    if( email !== user.email ) {
+    if ( email !== user.email ) {
       user.updateEmail(email)
-        .then(function() {
-          history.push(routes.ACCOUNT);
-        }).catch(error => {
+        .then(() => { history.push(routes.ACCOUNT) })
+        .catch(error => {
           if( error.code === "auth/requires-recent-login") {
             setReAuthWithPassword(true);
           } else {
