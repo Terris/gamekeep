@@ -3,7 +3,7 @@ import './modal.css';
 
 const Modal = ({ open, children }) => (
   <div className={`ui-modal ${open ? 'open' : ''}`}>
-    <div className="ui-modal-inner">
+    <div className="ui-modal-inner wrapper">
       {children}
     </div>
   </div>

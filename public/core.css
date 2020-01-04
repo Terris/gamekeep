@@ -72,4 +72,4 @@ label { font-size: 0.8rem; font-weight: 700; color: #444; }
 
 /* Template
 ------------------------------------ */
-.header, .main, .footer, .ui-modal-inner { max-width: 1024px; margin: 0 auto; }
+.header, .main, .footer, .wrapper { max-width: 1024px; margin: 0 auto; }

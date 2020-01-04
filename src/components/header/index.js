@@ -3,20 +3,25 @@ import { Link, withRouter } from 'react-router-dom';
 import { AuthUserContext } from '../session';
 import { auth } from '../../firebase';
 import { routes } from '../../constants';
+import Drawer from '../ui/drawer';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBars } from '@fortawesome/free-solid-svg-icons';
 import './header.css';
 
 const Header = (props) => (
   <header className="header" data-testid="comp-header">
     <h1 className="logo">Gamekeep</h1>
-    <AuthUserContext.Consumer>
-      {authUser =>
-        authUser ? (
-          <NavigationAuth authUser={authUser} />
-        ) : (
-          <NavigationNonAuth />
-        )
-      }
-    </AuthUserContext.Consumer>
+    <Drawer trigger={<FontAwesomeIcon icon={faBars} />} openDefault={true}>
+      <AuthUserContext.Consumer>
+        {authUser =>
+          authUser ? (
+            <NavigationAuth authUser={authUser} />
+          ) : (
+            <NavigationNonAuth />
+          )
+        }
+      </AuthUserContext.Consumer>
+    </Drawer>
   </header>
 );
 

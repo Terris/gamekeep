@@ -1,10 +1,25 @@
-.header { margin-bottom: 1rem; }
+.header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
 .header a,
-.header button { display: inline-block; font-size: 1rem; line-height: 1.4; padding: 1rem 20px; color: #8e8e8e; }
+.header button {
+  display: block;
+  font-size: 1rem;
+  line-height: 1.4;
+  text-align: left;
+  padding: 1rem 20px;
+  color: #8e8e8e;
+  
+}
 .header a:hover,
 .header button:hover { color: #0363b7; }
 .logo { font-size: 1rem; font-weight: 400; }
 
-@media (min-width: 450px) {
-  .header { display: flex; }
+.header .ui-drawer-contents-inner {
+  display: flex;
+  flex-direction: column;
 }
+.header .ui-drawer-contents-inner a,
+.header .ui-drawer-contents-inner button { border-bottom: 1px solid #ccc; }
