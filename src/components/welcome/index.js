@@ -15,7 +15,7 @@ const Welcome = ({ authUser }) => {
     if ( displayName !== "" ) {
       db.user(authUser.uid)
         .update({ displayName: displayName })
-        .then(() => history.push(routes.DASHBOARD))
+        .then(() => history.push(routes.DASHBOARD.path))
         .catch(error => setMessage(error.message));
     } else {
       setMessage("You must set a Display Name to continue.")

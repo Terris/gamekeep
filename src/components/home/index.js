@@ -16,7 +16,7 @@ const Home = () => {
     <AuthUserContext.Consumer>
       {authUser =>
         authUser
-        ? <Redirect to={routes.DASHBOARD} />
+        ? <Redirect to={routes.DASHBOARD.path} />
         : ( <HomePage /> )
       }
     </AuthUserContext.Consumer>

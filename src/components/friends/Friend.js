@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { db } from '../../firebase';
+import { Message } from '../ui';
+
 const Friend = ({ uid }) => {
   const [loading, setLoading] = useState(true)
   const [message, setMessage] = useState("");
@@ -13,7 +15,7 @@ const Friend = ({ uid }) => {
         setLoading(false);
       })
       .catch(error => setMessage(error.message));
-  }, []);
+  }, [uid]);
   
   if (loading) {
     return null;
@@ -21,6 +23,7 @@ const Friend = ({ uid }) => {
   
   return (
     <div className="friends-friend">
+      {message && <Message message={message} />}
       <p>{friend.displayName}</p>
       <hr/>
     </div>

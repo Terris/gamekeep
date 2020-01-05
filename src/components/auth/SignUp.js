@@ -14,7 +14,7 @@ const SignUp = () => {
   
   const createDbUser = (displayName, email, uid) => {
     db.createUser(displayName, email, uid)
-    .then(() => history.push(routes.WELCOME))
+    .then(() => history.push(routes.WELCOME.path))
     .catch(error => setMessage(error.message))
   }
   

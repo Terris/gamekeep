@@ -13,7 +13,7 @@ const SignInWithGoogleBtn = () => {
   
   const createDbUser = (displayName, email, uid) => {
     db.createUser(displayName, email, uid)
-      .then(() => history.push(routes.WELCOME))
+      .then(() => history.push(routes.WELCOME.path))
       .catch(error => setMessage(error.message))
   }
   
@@ -23,7 +23,7 @@ const SignInWithGoogleBtn = () => {
       if (response.additionalUserInfo.isNewUser === true) {
         createDbUser(response.user.displayName, response.user.email, response.user.uid)
       } else {
-        history.push(routes.DASHBOARD)
+        history.push(routes.DASHBOARD.path)
       }
     })
     .catch(error => setMessage(error.messsage))

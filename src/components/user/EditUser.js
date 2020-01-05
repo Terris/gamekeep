@@ -15,12 +15,12 @@ const EditUser = ({ authUser }) => {
     e.preventDefault();
     if ( displayName !== authUser.displayName ) {
       authUser.updateProfile({ displayName: displayName })
-        .then(() => { history.push(routes.ACCOUNT) })
+        .then(() => { history.push(routes.ACCOUNT.path) })
         .catch(error => setMessage(error.message));
     }
     if ( email !== authUser.email ) {
       authUser.updateEmail(email)
-        .then(() => { history.push(routes.ACCOUNT) })
+        .then(() => { history.push(routes.ACCOUNT.path) })
         .catch(error => {
           if( error.code === "auth/requires-recent-login") {
             setReAuthWithPassword(true);

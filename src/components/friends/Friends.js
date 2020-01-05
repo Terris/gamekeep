@@ -24,21 +24,12 @@ const Friends = ({ authUser }) => {
     return () => unsubscribe();
   }, [authUser]);
   
-  const RenderFriends = () => {
-    if (!friends.length) {
-      return <p>You haven't added any friends yet.</p>
-    }
-    return (
-      friends.map(friend => <Friend key={friend.id} uid={friend.id} />)
-    )
-  }
-  
   return (
     <div className="friends">
       {!!loading && <Loader />}
       <h2>Friends</h2>
       <AddFriendBtn user={authUser} />
-      <RenderFriends />
+      {!!friends && friends.map(friend => <Friend key={friend.id} uid={friend.id} />)}
     </div>
   )
 }

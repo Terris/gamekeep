@@ -20,14 +20,14 @@ const App = () => {
       <Header />
       <main className="main">
         <Switch>
-          <Route exact path={routes.HOME} component={Home} />
-          <Route exact path={routes.SIGN_UP} component={SignUp} />
-          <Route exact path={routes.SIGN_IN} component={SignIn} />
-          <Route exact path={routes.FORGOT_PASSWORD} component={ForgotPassword} />
-          <Route exact path={routes.WELCOME} component={Welcome} />
-          <Route exact path={routes.DASHBOARD} component={Dashboard} />
-          <Route exact path={routes.FRIENDS} component={Friends} />
-          <Route exact path={routes.ACCOUNT} component={Account} />
+          <Route exact path={routes.HOME.path} component={Home} />
+          <Route exact path={routes.SIGN_UP.path} component={SignUp} />
+          <Route exact path={routes.SIGN_IN.path} component={SignIn} />
+          <Route exact path={routes.FORGOT_PASSWORD.path} component={ForgotPassword} />
+          <Route exact path={routes.WELCOME.path} component={Welcome} />
+          <Route exact path={routes.DASHBOARD.path} component={Dashboard} />
+          <Route exact path={routes.FRIENDS.path} component={Friends} />
+          <Route exact path={routes.ACCOUNT.path} component={Account} />
           <Route component={NoMatch} />
         </Switch>
       </main>

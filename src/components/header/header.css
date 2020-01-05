@@ -16,7 +16,7 @@
 .header a:hover,
 .header button:hover { color: #0363b7; }
 .logo { font-size: 1rem; font-weight: 400; }
-
+.pagetitle { font-size: 1rem; }
 .header .ui-drawer-contents-inner {
   display: flex;
   flex-direction: column;
