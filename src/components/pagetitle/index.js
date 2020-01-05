@@ -4,14 +4,19 @@ import { useLocation } from 'react-router-dom';
 import { routes } from '../../constants';
 
 const PageTitle = () => {
-  const [pageTitle, setPageTitle] = useState();
+  const [pageTitle, setPageTitle] = useState("GameKeep");
   
   let location = useLocation();
   useEffect(() => {
+    
+    console.log(location);
+    
     let route = _.find(routes, function(rt) {
       return rt.path === location.pathname
     });
-    setPageTitle(route.title);
+    if (route) {
+      setPageTitle(route.title);
+    }
   }, [location]);
   
   return (
