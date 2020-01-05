@@ -5,6 +5,7 @@ import EditUser from './EditUser';
 import './account.css';
 
 const Account = ({ authUser }) => {
+  
   return (
     <div className="ui-account">
       <div className="ui-account-header">
@@ -13,7 +14,7 @@ const Account = ({ authUser }) => {
         <p className="ui-account-email">{authUser.email}</p>
       </div>
       <hr/>
-      <EditUser user={authUser} />
+      <EditUser authUser={authUser} />
     </div>
   )
 }

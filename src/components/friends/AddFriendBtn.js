@@ -20,19 +20,19 @@ const AddFriendBtn = ({ user }) => {
             db.usersFriend(user.uid, friend.uid).get()
               .then(doc => {
                 if (doc.exists) {
-                  setMessage("You're already friends with that person.")
+                  setMessage("You are already friends with that person.")
                 } else {
-                  db.createUsersFriend(user.uid, friend.uid, "anon")
+                  db.createUsersFriend(user.uid, friend.uid)
                     .then(() => setModalOpen(false))
                     .catch(error => setMessage(error));
                 }
-              }).catch(error => console.log(error));
+              }).catch(error => setMessage(error.message));
           } else {
             // user not found
             setMessage("That user hasn't signed up yet. Would you like to send them an invite?");
           }
         })
-        .catch(error => setMessage(error));
+        .catch(error => setMessage(error.message));
     } else {
       setMessage("The email field is required.")
     }
@@ -64,7 +64,7 @@ const AddFriendBtn = ({ user }) => {
             </div>
             <div className="field">
               <button onClick={onSubmit} type="submit" className="btn">Submit</button>
-              <button onClick={onClose} className="btn btn-cancel" style={{marginLeft: "20px"}}>Cancel</button>
+              <button onClick={onClose} type="button" className="btn btn-cancel" style={{marginLeft: "20px"}}>Cancel</button>
             </div>
           </form>
         </div>

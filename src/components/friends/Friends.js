@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { db } from '../../firebase';
 import { withAuthorization } from '../session';
 import AddFriendBtn from './AddFriendBtn';
+import Friend from './Friend';
 import './friends.css';
 
 const Friends = ({ authUser }) => {
@@ -19,7 +20,6 @@ const Friends = ({ authUser }) => {
         setFriends(newFriends);
         setLoading(false);
     });
-    
     return () => unsubscribe();
   }, [authUser]);
   
@@ -28,7 +28,7 @@ const Friends = ({ authUser }) => {
       return <p>You haven't added any friends yet.</p>
     }
     return (
-      friends.map(friend => <p key={friend.id}>{friend.id}</p>)
+      friends.map(friend => <Friend key={friend.id} uid={friend.id} />)
     )
   }
   

@@ -4,22 +4,22 @@ import { routes } from '../../constants';
 import { Message } from '../ui';
 import ReAuthenticateWithPassword from './ReAuthenticateWithPassword';
 
-const EditUser = ({ user }) => {
+const EditUser = ({ authUser }) => {
   let history = useHistory();
   const [message, setMessage] = useState('');
-  const [email, setEmail] = useState(user.email);
-  const [displayName, setDisplayName] = useState(user.displayName);
+  const [email, setEmail] = useState(authUser.email);
+  const [displayName, setDisplayName] = useState(authUser.displayName);
   const [reAuthWithPassword, setReAuthWithPassword] = useState(false);
   
   const onSubmit = (e) => {
     e.preventDefault();
-    if ( displayName !== user.displayName ) {
-      user.updateProfile({ displayName: displayName })
+    if ( displayName !== authUser.displayName ) {
+      authUser.updateProfile({ displayName: displayName })
         .then(() => { history.push(routes.ACCOUNT) })
         .catch(error => setMessage(error.message));
     }
-    if ( email !== user.email ) {
-      user.updateEmail(email)
+    if ( email !== authUser.email ) {
+      authUser.updateEmail(email)
         .then(() => { history.push(routes.ACCOUNT) })
         .catch(error => {
           if( error.code === "auth/requires-recent-login") {
@@ -53,7 +53,7 @@ const EditUser = ({ user }) => {
             name="email"
             id="email"
             placeholder='Email'
-            disabled={user.providerData[0].providerId === "google.com" ? "disabled" : ""}
+            disabled={authUser.providerData[0].providerId === "google.com" ? "disabled" : ""}
             value={email}
             onChange={e => setEmail(e.currentTarget.value)} />
         </div>
@@ -61,7 +61,7 @@ const EditUser = ({ user }) => {
           <button type='submit' className="btn">Update</button>
         </div>
       </form>
-      {!!reAuthWithPassword && <ReAuthenticateWithPassword user={user} />}
+      {!!reAuthWithPassword && <ReAuthenticateWithPassword authUser={authUser} />}
     </Fragment>
   );
 }

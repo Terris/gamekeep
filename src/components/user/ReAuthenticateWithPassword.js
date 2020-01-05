@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { auth } from '../../firebase';
 import { Message, Modal } from '../ui';
 
-const ReAuthenticateWithPassword = ({ user, open }) => {
+const ReAuthenticateWithPassword = ({ authUser, open }) => {
   
   const [modalOpen, setModalOpen] = useState(true);
   const [password, setPassword] = useState('');
@@ -10,8 +10,8 @@ const ReAuthenticateWithPassword = ({ user, open }) => {
   
   const onSubmit = e => {
     e.preventDefault();
-    let credential = auth.getEmailAuthCredential(user.email, password);
-    user.reauthenticateWithCredential(credential).then(function() {
+    let credential = auth.getEmailAuthCredential(authUser.email, password);
+    authUser.reauthenticateWithCredential(credential).then(function() {
       setModalOpen(false);
     }).catch(function(error) {
       setMessage(error.message);

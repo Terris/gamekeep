@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import { db } from '../../firebase';
 import { withAuthorization } from '../session';
 import { routes } from '../../constants';
 import { Message } from '../ui';
 
 const Welcome = ({ authUser }) => {
-  
   let history = useHistory();
   const [message, setMessage] = useState("");
   const [displayName, setDisplayName] = useState(authUser.displayName || "");
@@ -13,16 +13,13 @@ const Welcome = ({ authUser }) => {
   const onSubmit = (e) => {
     e.preventDefault();
     if ( displayName !== "" ) {
-      authUser.updateProfile({displayName: displayName})
-        .then(function() {
-          history.push(routes.DASHBOARD);
-        }).catch(function(error) {
-          setMessage(error.message);
-        });
+      db.user(authUser.uid)
+        .update({ displayName: displayName })
+        .then(() => history.push(routes.DASHBOARD))
+        .catch(error => setMessage(error.message));
     } else {
       setMessage("You must set a Display Name to continue.")
     }
-    
   }
   
   return (
