@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { db } from '../../firebase';
 import { withAuthorization } from '../session';
+import { Loader } from '../ui';
 import AddFriendBtn from './AddFriendBtn';
 import Friend from './Friend';
 import './friends.css';
@@ -34,10 +35,10 @@ const Friends = ({ authUser }) => {
   
   return (
     <div className="friends">
+      {!!loading && <Loader />}
       <h2>Friends</h2>
       <AddFriendBtn user={authUser} />
-      {!!loading && <p>...loading</p>}
-      {!loading && <RenderFriends />}
+      <RenderFriends />
     </div>
   )
 }
