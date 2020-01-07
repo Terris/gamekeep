@@ -2,8 +2,8 @@ import { db } from './firebase';
 
 // User API
 // ----------------------------------
-export const createUser = (displayName, email, uid) =>
-  db.collection('users').doc(uid).set({ displayName, email, uid })
+export const createUser = (displayName, email, photoURL, uid) =>
+  db.collection('users').doc(uid).set({ displayName, email, photoURL, uid })
 
 export const user = (uid) =>
   db.collection("users").doc(uid)

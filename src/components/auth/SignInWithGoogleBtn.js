@@ -11,8 +11,8 @@ const SignInWithGoogleBtn = () => {
   let history = useHistory();
   const [message, setMessage] = useState("");
   
-  const createDbUser = (displayName, email, uid) => {
-    db.createUser(displayName, email, uid)
+  const createDbUser = (displayName, email, photoURL, uid) => {
+    db.createUser(displayName, email, photoURL, uid)
       .then(() => history.push(routes.WELCOME.path))
       .catch(error => setMessage(error.message))
   }
@@ -21,7 +21,7 @@ const SignInWithGoogleBtn = () => {
     auth.signInWithGoogle()
     .then(response => {
       if (response.additionalUserInfo.isNewUser === true) {
-        createDbUser(response.user.displayName, response.user.email, response.user.uid)
+        createDbUser(response.user.displayName, response.user.email, response.user.photoURL, response.user.uid)
       } else {
         history.push(routes.DASHBOARD.path)
       }

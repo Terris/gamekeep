@@ -17,7 +17,7 @@ const Account = ({ authUser }) => {
     <div className="ui-account">
       <div className="ui-account-header">
         {message && <Message message={message} />}
-        {!!authUser.photoURL && <Avatar src={authUser.photoURL} alt={`${authUser.displayName}'s Avatar'`} wrapperClass={"ui-account-avatar"} /> }
+        {user.photoURL && <Avatar src={user.photoURL} alt={`${user.displayName}'s Avatar'`} wrapperClass={"ui-account-avatar"} /> }
         <h2 className="ui-account-display-name">{user.displayName}</h2>
         <p className="ui-account-email">{authUser.email}</p>
       </div>
