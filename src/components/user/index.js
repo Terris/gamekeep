@@ -1,3 +1,6 @@
-import Account from './Account';
+import { useUser, useRealtimeUser } from './hooks';
 
-export { Account };
+export {
+  useUser,
+  useRealtimeUser
+}

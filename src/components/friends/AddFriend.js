@@ -2,33 +2,26 @@ import React, { useState } from 'react';
 import { db } from '../../firebase';
 import { Message, Modal } from '../ui';
 
-const AddFriendBtn = ({ user }) => {
+const AddFriend = ({ user, friends }) => {
   const [modalOpen, setModalOpen] = useState();
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   
   const onSubmit = e => {
     e.preventDefault();
-    if (email !== "") {
-      // search for user
-      db.userByEmail(email).get()
-        .then(querySnapshot => {
-          if (querySnapshot.docs.length) {
-            // the user exists
-            let friend = querySnapshot.docs[0].data();
-            // check if friendship already exists
-            db.usersFriend(user.uid, friend.uid).get()
-              .then(doc => {
-                if (doc.exists) {
-                  setMessage("You are already friends with that person.")
-                } else {
-                  db.createUsersFriend(user.uid, friend.uid)
-                    .then(() => setModalOpen(false))
-                    .catch(error => setMessage(error));
-                }
-              }).catch(error => setMessage(error.message));
+    if (email !== "" && email !== user.email) {
+      db.userByEmail(email)
+        .get()
+        .then(snapshot => {
+          if (snapshot.docs.length) {
+            let friend = snapshot.docs[0].data();
+            friends.findIndex(fr => fr.friend_id === friend.uid) !== -1
+            ? setMessage("You are already friends with that person.")
+            : (db.createFriendship(user.uid, friend.uid)
+                .then(() => handleClose())
+                .catch(error => setMessage(error.message))
+            )
           } else {
-            // user not found
             setMessage("That user hasn't signed up yet. Would you like to send them an invite?");
           }
         })
@@ -38,7 +31,7 @@ const AddFriendBtn = ({ user }) => {
     }
   }
   
-  const onClose = () => {
+  const handleClose = () => {
     setMessage("");
     setEmail("");
     setModalOpen(false);
@@ -64,7 +57,7 @@ const AddFriendBtn = ({ user }) => {
             </div>
             <div className="field">
               <button onClick={onSubmit} type="submit" className="btn">Submit</button>
-              <button onClick={onClose} type="button" className="btn btn-cancel" style={{marginLeft: "20px"}}>Cancel</button>
+              <button onClick={handleClose} type="button" className="btn btn-cancel" style={{marginLeft: "20px"}}>Cancel</button>
             </div>
           </form>
         </div>
@@ -73,4 +66,4 @@ const AddFriendBtn = ({ user }) => {
   )
 }
 
-export default AddFriendBtn;
+export default AddFriend;

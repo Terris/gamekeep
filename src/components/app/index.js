@@ -8,7 +8,7 @@ import NoMatch from '../nomatch';
 import { SignUp } from '../auth';
 import { SignIn } from '../auth';
 import { ForgotPassword } from '../auth';
-import { Account } from '../user';
+import { Account } from '../account';
 import { Friends } from '../friends';
 import { withAuthentication } from '../session';
 import { routes } from '../../constants';

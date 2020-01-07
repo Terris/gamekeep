@@ -1,26 +1,22 @@
 import React, { Fragment, useState } from 'react';
-import { useHistory } from 'react-router-dom';
-import { routes } from '../../constants';
+import { db } from '../../firebase';
 import { Message } from '../ui';
 import ReAuthenticateWithPassword from './ReAuthenticateWithPassword';
 
-const EditUser = ({ authUser }) => {
-  let history = useHistory();
+const EditUser = ({ authUser, user }) => {
   const [message, setMessage] = useState('');
   const [email, setEmail] = useState(authUser.email);
-  const [displayName, setDisplayName] = useState(authUser.displayName);
+  const [displayName, setDisplayName] = useState(user.displayName);
   const [reAuthWithPassword, setReAuthWithPassword] = useState(false);
   
   const onSubmit = (e) => {
     e.preventDefault();
-    if ( displayName !== authUser.displayName ) {
-      authUser.updateProfile({ displayName: displayName })
-        .then(() => { history.push(routes.ACCOUNT.path) })
+    if ( displayName !== user.displayName ) {
+      db.user(authUser.uid).update({ displayName: displayName })
         .catch(error => setMessage(error.message));
     }
     if ( email !== authUser.email ) {
       authUser.updateEmail(email)
-        .then(() => { history.push(routes.ACCOUNT.path) })
         .catch(error => {
           if( error.code === "auth/requires-recent-login") {
             setReAuthWithPassword(true);

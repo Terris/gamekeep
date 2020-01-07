@@ -1,35 +1,19 @@
-import React, { useState, useEffect } from 'react';
-import { db } from '../../firebase';
+import React from 'react';
 import { withAuthorization } from '../session';
+import { useFriends } from './hooks';
 import { Loader } from '../ui';
-import AddFriendBtn from './AddFriendBtn';
+import AddFriend from './AddFriend';
 import Friend from './Friend';
-import './friends.css';
 
 const Friends = ({ authUser }) => {
-  
-  const [loading, setLoading] = useState(true);
-  const [friends, setFriends] = useState([]);
-  
-  useEffect(() => {
-    const unsubscribe = db.usersFriends(authUser.uid)
-      .onSnapshot((snapshot) => {
-        const newFriends = snapshot.docs.map((doc) => ({
-          id: doc.id,
-          ...doc.data()
-        }))
-        setFriends(newFriends);
-        setLoading(false);
-    });
-    return () => unsubscribe();
-  }, [authUser]);
+  const { friends } = useFriends(authUser.uid);
   
   return (
     <div className="friends">
-      {!!loading && <Loader />}
+      {!friends && <Loader />}
       <h2>Friends</h2>
-      <AddFriendBtn user={authUser} />
-      {!!friends && friends.map(friend => <Friend key={friend.id} uid={friend.id} />)}
+      <AddFriend user={authUser} friends={friends} />
+      {!!friends && friends.map(friend => <Friend key={friend.id} uid={friend.friend_id} />)}
     </div>
   )
 }

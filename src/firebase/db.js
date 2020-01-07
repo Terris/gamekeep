@@ -11,13 +11,25 @@ export const user = (uid) =>
 export const userByEmail = (email) =>
   db.collection('users').where("email", "==", email).limit(1)
 
-// Friends API
+// Friendships API
 // ----------------------------------
-export const usersFriends = (uid) =>
-  db.collection("users").doc(uid).collection("friends")
+export const friendships = ()  =>
+  db.collection('friendships')
 
-export const usersFriend = (uid, friendId) =>
-  db.collection("users").doc(uid).collection("friends").doc(friendId)
-  
-export const createUsersFriend = (uid, friendId) =>
-  usersFriend(uid, friendId).set({ })
+export const friendship = (id)  =>
+  db.collection('friendships').doc(id)
+
+async function createBothFriendships(uid, friendId) {
+  let batch = db.batch();
+  let frnOne = await db.collection('friendships').add({ uid: uid, friend_id: friendId})
+  let frnTwo = await db.collection('friendships').add({ uid: friendId, friend_id: uid})
+  let invOne = await frnOne.id;
+  let invTwo = await frnTwo.id;
+  await batch.update(friendship(invOne), { inverse_id: frnTwo } );
+  await batch.update(friendship(invTwo), { inverse_id: frnOne } );
+  let commit = await batch.commit()
+  return commit;
+}
+
+export const createFriendship = (uid, friendId) =>
+  createBothFriendships(uid, friendId)

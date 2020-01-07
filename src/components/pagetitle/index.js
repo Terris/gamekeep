@@ -5,12 +5,9 @@ import { routes } from '../../constants';
 
 const PageTitle = () => {
   const [pageTitle, setPageTitle] = useState("GameKeep");
-  
   let location = useLocation();
+  
   useEffect(() => {
-    
-    console.log(location);
-    
     let route = _.find(routes, function(rt) {
       return rt.path === location.pathname
     });
