@@ -11,7 +11,7 @@ import { ForgotPassword } from '../auth';
 import { Account } from '../account';
 import { Friends } from '../friends';
 import { withAuthentication } from '../session';
-import { routes } from '../../constants';
+import { ROUTES } from '../../constants';
 import './app.css';
 
 const App = () => {
@@ -20,14 +20,14 @@ const App = () => {
       <Header />
       <main className="main">
         <Switch>
-          <Route exact path={routes.HOME.path} component={Home} />
-          <Route exact path={routes.SIGN_UP.path} component={SignUp} />
-          <Route exact path={routes.SIGN_IN.path} component={SignIn} />
-          <Route exact path={routes.FORGOT_PASSWORD.path} component={ForgotPassword} />
-          <Route exact path={routes.WELCOME.path} component={Welcome} />
-          <Route exact path={routes.DASHBOARD.path} component={Dashboard} />
-          <Route exact path={routes.FRIENDS.path} component={Friends} />
-          <Route exact path={routes.ACCOUNT.path} component={Account} />
+          <Route exact path={ROUTES.HOME.path} component={Home} />
+          <Route exact path={ROUTES.SIGN_UP.path} component={SignUp} />
+          <Route exact path={ROUTES.SIGN_IN.path} component={SignIn} />
+          <Route exact path={ROUTES.FORGOT_PASSWORD.path} component={ForgotPassword} />
+          <Route exact path={ROUTES.WELCOME.path} component={Welcome} />
+          <Route exact path={ROUTES.DASHBOARD.path} component={Dashboard} />
+          <Route exact path={ROUTES.FRIENDS.path} component={Friends} />
+          <Route exact path={ROUTES.ACCOUNT.path} component={Account} />
           <Route component={NoMatch} />
         </Switch>
       </main>

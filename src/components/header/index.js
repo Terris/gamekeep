@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { AuthUserContext } from '../session';
 import { auth } from '../../firebase';
-import { routes } from '../../constants';
+import { ROUTES } from '../../constants';
 import PageTitle from '../pagetitle';
 import Drawer from '../ui/drawer';
 
@@ -12,17 +12,17 @@ import './header.css';
 
 const NavigationAuth = () => (
   <Fragment>
-    <Link to={routes.DASHBOARD.path}>Dashboard</Link>
-    <Link to={routes.FRIENDS.path}>Friends</Link>
-    <Link to={routes.ACCOUNT.path}>Account</Link>
+    <Link to={ROUTES.DASHBOARD.path}>Dashboard</Link>
+    <Link to={ROUTES.FRIENDS.path}>Friends</Link>
+    <Link to={ROUTES.ACCOUNT.path}>Account</Link>
     <button onClick={auth.signOut}>Sign Out</button>
   </Fragment>
 );
 
 const NavigationNonAuth = () => (
   <Fragment>
-    <Link to={routes.SIGN_UP.path}>Sign Up</Link>
-    <Link to={routes.SIGN_IN.path}>Sign In</Link>
+    <Link to={ROUTES.SIGN_UP.path}>Sign Up</Link>
+    <Link to={ROUTES.SIGN_IN.path}>Sign In</Link>
   </Fragment>
 );
 

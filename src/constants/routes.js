@@ -1,4 +1,4 @@
-export const routes = {
+export const ROUTES = {
   HOME:                 {path: '/', title: "Home"},
   SIGN_IN:              {path: '/signin', title: "Sign In"},
   SIGN_UP:              {path: '/signup', title: "Sign Up"},

@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from 'react';
 import { auth, db } from '../../firebase';
 import { useHistory } from 'react-router-dom';
-import { routes } from '../../constants';
+import { ROUTES } from '../../constants';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGoogle } from '@fortawesome/free-brands-svg-icons';
 import { Message } from '../ui';
@@ -13,7 +13,7 @@ const SignInWithGoogleBtn = () => {
   
   const createDbUser = (displayName, email, photoURL, uid) => {
     db.createUser(displayName, email, photoURL, uid)
-      .then(() => history.push(routes.WELCOME.path))
+      .then(() => history.push(ROUTES.WELCOME.path))
       .catch(error => setMessage(error.message))
   }
   
@@ -23,7 +23,7 @@ const SignInWithGoogleBtn = () => {
       if (response.additionalUserInfo.isNewUser === true) {
         createDbUser(response.user.displayName, response.user.email, response.user.photoURL, response.user.uid)
       } else {
-        history.push(routes.DASHBOARD.path)
+        history.push(ROUTES.DASHBOARD.path)
       }
     })
     .catch(error => setMessage(error.messsage))

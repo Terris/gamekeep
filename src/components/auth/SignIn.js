@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { auth } from '../../firebase';
 import { useHistory, Link } from 'react-router-dom';
-import { routes } from '../../constants';
+import { ROUTES } from '../../constants';
 import { Message } from '../ui';
 import SignInWithGoogleBtn from './SignInWithGoogleBtn';
 
@@ -16,7 +16,7 @@ const SignIn = () => {
     event.preventDefault();
     auth.signInWithEmailAndPassword(email, password)
     .then(response => {
-      history.push(routes.DASHBOARD.path)
+      history.push(ROUTES.DASHBOARD.path)
     })
     .catch(error => setMessage(error.message))
   }
@@ -53,11 +53,11 @@ const SignIn = () => {
         </div>
         <div className="field">
           <button type='submit' className="btn">Submit</button>
-          <Link to={routes.FORGOT_PASSWORD.path} style={{ marginLeft: "20px" }}>Forgot your password?</Link>
+          <Link to={ROUTES.FORGOT_PASSWORD.path} style={{ marginLeft: "20px" }}>Forgot your password?</Link>
         </div>
       </form>
       <hr/>
-      <p>Don't have an account? <Link to={routes.SIGN_UP.path}>Sign Up</Link></p>
+      <p>Don't have an account? <Link to={ROUTES.SIGN_UP.path}>Sign Up</Link></p>
     </div>
   )
 }

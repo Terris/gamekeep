@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { db } from '../../firebase';
 import { withAuthorization } from '../session';
-import { routes } from '../../constants';
+import { ROUTES } from '../../constants';
 import { Message } from '../ui';
 
 const Welcome = ({ authUser }) => {
@@ -15,7 +15,7 @@ const Welcome = ({ authUser }) => {
     if ( displayName !== "" ) {
       db.user(authUser.uid)
         .update({ displayName: displayName })
-        .then(() => history.push(routes.DASHBOARD.path))
+        .then(() => history.push(ROUTES.DASHBOARD.path))
         .catch(error => setMessage(error.message));
     } else {
       setMessage("You must set a Display Name to continue.")

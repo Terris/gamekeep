@@ -1,7 +1,7 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
 import { AuthUserContext } from '../session';
-import { routes } from '../../constants';
+import { ROUTES } from '../../constants';
 
 const HomePage = () => {
   return(
@@ -16,7 +16,7 @@ const Home = () => {
     <AuthUserContext.Consumer>
       {authUser =>
         authUser
-        ? <Redirect to={routes.DASHBOARD.path} />
+        ? <Redirect to={ROUTES.DASHBOARD.path} />
         : ( <HomePage /> )
       }
     </AuthUserContext.Consumer>

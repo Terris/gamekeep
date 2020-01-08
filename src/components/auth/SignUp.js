@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { auth, db } from '../../firebase';
 import { useHistory } from 'react-router-dom';
-import { routes } from '../../constants';
+import { ROUTES } from '../../constants';
 import { Message } from '../ui';
 import SignInWithGoogleBtn from './SignInWithGoogleBtn';
 
@@ -14,7 +14,7 @@ const SignUp = () => {
   
   const createDbUser = (displayName, email, photoURL, uid) => {
     db.createUser(displayName, email, photoURL, uid)
-    .then(() => history.push(routes.WELCOME.path))
+    .then(() => history.push(ROUTES.WELCOME.path))
     .catch(error => setMessage(error.message))
   }
   
