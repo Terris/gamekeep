@@ -12,7 +12,7 @@ const Drawer = ({ trigger, children, openDefault = false }) => {
       {open && (
         <div className="ui-drawer-contents">
           <div className="ui-drawer-contents-inner wrapper" onClick={() => setOpen(false)}>
-            <button><FontAwesomeIcon icon={faArrowLeft} /></button>
+            <button className="ui-drawer-close-btn"><FontAwesomeIcon icon={faArrowLeft} /></button>
             {children}
           </div>
         </div>

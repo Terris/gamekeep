@@ -6,3 +6,4 @@
   left: 0;
   background: #ffffff;
 }
+.ui-drawer .ui-drawer-close-btn { border-bottom: 1px solid #ccc; }

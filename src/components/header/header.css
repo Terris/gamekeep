@@ -15,11 +15,10 @@
 }
 .header a:hover,
 .header button:hover { color: #0363b7; }
-.logo { font-size: 1rem; font-weight: 400; }
+.logo { font-size: 1rem; font-weight: 400; padding: 0; }
 .pagetitle { font-size: 1rem; }
-.header .ui-drawer-contents-inner {
-  display: flex;
-  flex-direction: column;
-}
-.header .ui-drawer-contents-inner a,
-.header .ui-drawer-contents-inner button { border-bottom: 1px solid #ccc; }
+
+.header .header-actions { display: flex; }
+.header .nav-primary .ui-drawer-contents-inner { display: flex; flex-direction: column; }
+.header .nav-primary .ui-drawer-contents-inner a,
+.header .nav-primary .ui-drawer-contents-inner button { border-bottom: 1px solid #ccc; }

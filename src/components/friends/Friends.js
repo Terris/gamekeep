@@ -6,16 +6,16 @@ import AddFriend from './AddFriend';
 import Friend from './Friend';
 import './friends.css';
 
-const Friends = ({ authUser }) => {
+const Friends = ({ authUser, dbUser }) => {
   const { friends, loading } = useFriends(authUser.uid);
   
   return (
     <div className="friends">
       {loading && <Loader />}
-      <AddFriend user={authUser} friends={friends} />
+      <AddFriend dbUser={dbUser} friends={friends} />
       {friends.length
-        ? (friends.map(friend => <Friend key={friend.id} friend={friend} />))
-        : (<p className="text-muted text-center">You haven't added any friends yet. Use the search bar above to find or invite your friends.</p>)
+        ? (friends.map(friend => <Friend key={friend.id} dbUser={dbUser} friend={friend} />))
+        : (<p className="text-muted">You haven't added any friends yet. Use the search bar above to find or invite your friends.</p>)
       }
     </div>
   )

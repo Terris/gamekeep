@@ -5,7 +5,7 @@ import { Message, Avatar } from '../ui';
 import AcceptFriendBtn from './AcceptFriendBtn';
 import RemoveFriendBtn from './RemoveFriendBtn';
 
-const Friend = ({ friend }) => {
+const Friend = ({ dbUser, friend }) => {
   const { message, loading, user } = useUser(friend.friend_id);
   
   if (loading) { return null }
@@ -19,7 +19,7 @@ const Friend = ({ friend }) => {
           {friend.status ===  FRIEND_STATUS.REQUESTER
             ? ("Friend request sent.")
             : friend.status ===  FRIEND_STATUS.REQUESTEE
-            ? (<AcceptFriendBtn friend={friend} />)
+            ? (<AcceptFriendBtn dbUser={dbUser} friend={friend} />)
             : friend.status ===  FRIEND_STATUS.ACCEPTED
             ? (<RemoveFriendBtn friend={friend} />)
             : null

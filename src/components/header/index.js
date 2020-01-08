@@ -6,17 +6,23 @@ import { AuthUserContext } from '../session';
 import { auth } from '../../firebase';
 import { ROUTES } from '../../constants';
 import PageTitle from '../pagetitle';
+import Alerts from '../alerts';
 import Drawer from '../ui/drawer';
 
 import './header.css';
 
-const NavigationAuth = () => (
-  <Fragment>
-    <Link to={ROUTES.DASHBOARD.path}>Dashboard</Link>
-    <Link to={ROUTES.FRIENDS.path}>Friends</Link>
-    <Link to={ROUTES.ACCOUNT.path}>Account</Link>
-    <button onClick={auth.signOut}>Sign Out</button>
-  </Fragment>
+const NavigationAuth = ({ authUser }) => (
+  <>
+    <Alerts authUser={authUser} />
+    <nav className="nav-primary">
+      <Drawer trigger={<FontAwesomeIcon icon={faBars} />}>
+        <Link to={ROUTES.DASHBOARD.path}>Dashboard</Link>
+        <Link to={ROUTES.FRIENDS.path}>Friends</Link>
+        <Link to={ROUTES.ACCOUNT.path}>Account</Link>
+        <button onClick={auth.signOut}>Sign Out</button>
+      </Drawer>
+    </nav>
+  </>
 );
 
 const NavigationNonAuth = () => (
@@ -28,9 +34,9 @@ const NavigationNonAuth = () => (
 
 const Header = () => (
   <header className="header" data-testid="comp-header">
-    <h1 className="logo">GameKeep</h1>
+    <h1 className="logo"><Link to={ROUTES.HOME.path}>GameKeep</Link></h1>
     <PageTitle />
-    <Drawer trigger={<FontAwesomeIcon icon={faBars} />}>
+    <nav className="header-actions">
       <AuthUserContext.Consumer>
         {authUser =>
           authUser ? (
@@ -40,7 +46,7 @@ const Header = () => (
           )
         }
       </AuthUserContext.Consumer>
-    </Drawer>
+    </nav>
   </header>
 );
 

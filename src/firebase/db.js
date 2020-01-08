@@ -12,6 +12,20 @@ export const userByEmail = (email) =>
 export const createUser = (displayName, email, photoURL, uid) =>
   db.collection('users').doc(uid).set({ displayName, email, photoURL, uid })
 
+// Alerts API
+// ----------------------------------
+export const userAlerts = (uid) =>
+  db.collection('users').doc(uid).collection('alerts')
+
+export const userAlert = (uid, id) =>
+  user(uid).collection('alerts').doc(id)
+
+export const createUserAlert = (uid, alert) =>
+  user(uid).collection('alerts').add({ ...alert })
+
+export const deleteUserAlert = (uid, alertId) =>
+  user(uid).collection('alerts').doc(alertId).delete()
+
 // Friendships API
 // ----------------------------------
 export const friendships = ()  =>
@@ -20,28 +34,32 @@ export const friendships = ()  =>
 export const friendship = (id)  =>
   db.collection('friendships').doc(id)
 
-export const createFriendship = async (uid, friendId) => {
-  let friendOne = await db.collection('friendships').add({ uid: uid, friend_id: friendId})
-  let friendTwo = await db.collection('friendships').add({ uid: friendId, friend_id: uid})
-  let inviteOne = await friendOne.id;
-  let inviteTwo = await friendTwo.id;
+export const createFriendship = async (user, friend) => {
+  let friendshipOne = await db.collection('friendships').add({ uid: user.uid, friend_id: friend.uid})
+  let friendshipTwo = await db.collection('friendships').add({ uid: friend.uid, friend_id: user.uid})
+  let inviteAlert = await createUserAlert(friend.uid, {type: "invite", message: `${user.displayName} wants to be friends! Click here to accept.`, link: "FRIENDS" });
+  friendshipOne = await friendshipOne.id;
+  friendshipTwo = await friendshipTwo.id;
+  inviteAlert = await inviteAlert.id;
   let batch = db.batch();
-  await batch.update(friendship(inviteOne), { inverse_id: inviteTwo, status: FRIEND_STATUS.REQUESTER } );
-  await batch.update(friendship(inviteTwo), { inverse_id: inviteOne, status: FRIEND_STATUS.REQUESTEE } );
-  let commit = await batch.commit()
+  await batch.update(friendship(friendshipOne), { inverse_id: friendshipTwo, status: FRIEND_STATUS.REQUESTER } );
+  await batch.update(friendship(friendshipTwo), { inverse_id: friendshipOne, status: FRIEND_STATUS.REQUESTEE, alertRef: inviteAlert } );
+  const commit = await batch.commit();
   return commit;
 }
 
-export const acceptFriendRequest = (friend) => {
+export const acceptFriendRequest = (user, friend) => {
   let batch = db.batch();
   batch.update(friendship(friend.id), { status: FRIEND_STATUS.ACCEPTED } );
   batch.update(friendship(friend.inverse_id), { status: FRIEND_STATUS.ACCEPTED } );
-  return batch.commit()
+  batch.delete(userAlert(friend.uid, friend.alertRef));
+  createUserAlert(friend.friend_id, {type: "invite_accepted", message: `${user.displayName} accepted your friend request!`, link: "FRIENDS" });
+  return batch.commit();
 }
 
 export const removeFriend = (friend) => {
   let batch = db.batch();
   batch.delete(friendship(friend.id));
   batch.delete(friendship(friend.inverse_id));
-  return batch.commit()
+  return batch.commit();
 }

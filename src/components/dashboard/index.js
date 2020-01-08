@@ -3,7 +3,6 @@ import { withAuthorization } from '../session';
 
 const Dashboard = () => (
   <div className="dashboard">
-    <p>dashboard</p>
   </div>
 );
 

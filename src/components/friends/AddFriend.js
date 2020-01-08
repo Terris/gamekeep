@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { db } from '../../firebase';
 import { Message } from '../ui';
 
-const AddFriend = ({ user, friends }) => {
+const AddFriend = ({ dbUser, friends }) => {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState(null);
   
@@ -10,7 +10,7 @@ const AddFriend = ({ user, friends }) => {
     e.preventDefault();
     if (email === "") {
       setMessage({type: "error", message: "The email field is required."})
-    } else if (email === user.email) {
+    } else if (email === dbUser.email) {
       setMessage({type: "error", message: "That's your email, silly."})
     } else {
       db.userByEmail(email)
@@ -20,10 +20,10 @@ const AddFriend = ({ user, friends }) => {
             let friend = snapshot.docs[0].data();
             friends.findIndex(fr => fr.friend_id === friend.uid) !== -1
             ? setMessage({type: "error", message: "You are already friends with that person."})
-            : (db.createFriendship(user.uid, friend.uid)
+            : (db.createFriendship(dbUser, friend)
                 .then(() => {
                   setEmail("");
-                  setMessage({type: "success", message: "Friend request sent"});
+                  setMessage("");
                 })
                 .catch(error => setMessage({ type: "error", message: error.message }))
             )
