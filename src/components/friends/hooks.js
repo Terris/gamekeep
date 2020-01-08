@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { db } from '../../firebase';
 
 export const useFriends = uid => {
-  const [friends, setFriends] = useState(null);
+  const [friends, setFriends] = useState([]);
   
   useEffect(() => {
     let unsubscribe = db.friendships(uid)

@@ -73,3 +73,8 @@ label { font-size: 0.8rem; font-weight: 700; color: #7b7b7b; }
 /* Template
 ------------------------------------ */
 .header, .main, .footer, .wrapper { max-width: 1024px; margin: 0 auto; }
+
+/* Text Mods
+------------------------------------ */
+.text-center { text-align: center; }
+.text-muted { color: #a5a2a2; }
