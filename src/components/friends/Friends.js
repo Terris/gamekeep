@@ -4,6 +4,7 @@ import { useFriends } from './hooks';
 import { Loader } from '../ui';
 import AddFriend from './AddFriend';
 import Friend from './Friend';
+import './friends.css';
 
 const Friends = ({ authUser }) => {
   const { friends } = useFriends(authUser.uid);
@@ -11,7 +12,6 @@ const Friends = ({ authUser }) => {
   return (
     <div className="friends">
       {!friends && <Loader />}
-      <h2>Friends</h2>
       <AddFriend user={authUser} friends={friends} />
       {!!friends && friends.map(friend => <Friend key={friend.id} uid={friend.friend_id} />)}
     </div>

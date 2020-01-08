@@ -1,6 +1,6 @@
 import React from 'react';
 import { useUser } from '../user';
-import { Message } from '../ui';
+import { Message, Avatar } from '../ui';
 
 const Friend = ({ uid }) => {
   const { message, loading, user } = useUser(uid);
@@ -8,11 +8,13 @@ const Friend = ({ uid }) => {
   if (loading) { return null }
   
   return (
-    <div className="friends-friend">
+    <>
       {message && <Message message={message} />}
-      <p>{user.displayName}</p>
-      <hr/>
-    </div>
+      <div className="friends-friend">
+        <Avatar user={user} size="small" wrapperClass="avatar-inline" />
+        <p>{user.displayName}</p>
+      </div>
+    </>
   )
 }
 
