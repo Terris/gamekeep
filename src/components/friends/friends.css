@@ -1,5 +1,7 @@
-.friends .friends-friend {
+.friends .friend {
   display: flex;
   justify-content: flex-start;
   align-items: center;
 }
+.friends .friend .friend-status { margin-left: auto; padding-right: 20px; }
+.friend-status-requester { color: #719e71; }

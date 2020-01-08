@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { db } from '../../firebase';
 
 export const useFriends = uid => {
+  const [loading, setLoading] = useState(true);
   const [friends, setFriends] = useState([]);
   
   useEffect(() => {
@@ -13,8 +14,9 @@ export const useFriends = uid => {
           ...friend.data(),
         }));
       setFriends(newFriends);
+      setLoading(false);
     });
     return () => unsubscribe();
   }, [uid]);
-  return { friends };
+  return { friends, loading };
 };
