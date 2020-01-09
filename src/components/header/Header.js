@@ -5,9 +5,9 @@ import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { useAuthUserContext } from '../session';
 import { auth } from '../../firebase';
 import { ROUTES } from '../../constants';
-import PageTitle from '../pagetitle';
-import Alerts from '../alerts';
-import Drawer from '../ui/drawer';
+import { PageTitle } from '../pagetitle';
+import { Alerts } from '../alerts';
+import { Drawer } from '../ui';
 
 import './header.css';
 

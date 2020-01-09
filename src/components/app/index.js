@@ -18,8 +18,7 @@ import { SignIn } from '../auth';
 import { ForgotPassword } from '../auth';
 import { Account } from '../account';
 import { Friends } from '../friends';
-import { NotAllowed } from '../notallowed';
-import { NoMatch } from '../nomatch';
+import { NotAllowed, NoMatch } from '../static';
 // CSS
 import './app.css';
 
