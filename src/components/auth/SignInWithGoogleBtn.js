@@ -23,7 +23,7 @@ const SignInWithGoogleBtn = () => {
       if (response.additionalUserInfo.isNewUser === true) {
         createDbUser(response.user.displayName, response.user.email, response.user.photoURL, response.user.uid)
       } else {
-        history.push(ROUTES.DASHBOARD.path)
+        history.push(ROUTES.HOME.path)
       }
     })
     .catch(error => setMessage(error.messsage))

@@ -3,16 +3,16 @@ import { db } from '../../firebase';
 import { Message } from '../ui';
 import ReAuthenticateWithPassword from './ReAuthenticateWithPassword';
 
-const EditUser = ({ authUser, user }) => {
+const EditUser = ({ authUser, dbUser }) => {
   const [message, setMessage] = useState('');
   const [email, setEmail] = useState(authUser.email);
-  const [displayName, setDisplayName] = useState(user.displayName);
+  const [displayName, setDisplayName] = useState(dbUser.displayName);
   const [reAuthWithPassword, setReAuthWithPassword] = useState(false);
   
-  const onSubmit = (e) => {
+  const onSubmit = e => {
     e.preventDefault();
-    if ( displayName !== user.displayName ) {
-      db.user(authUser.uid).update({ displayName: displayName })
+    if ( displayName !== dbUser.displayName ) {
+      db.user(dbUser.uid).update({ displayName: displayName })
         .catch(error => setMessage(error.message));
     }
     if ( email !== authUser.email ) {

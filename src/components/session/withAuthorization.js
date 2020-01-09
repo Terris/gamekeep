@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import AuthUserContext from './context';
+import { db } from '../../firebase';
+import { useAuthState } from './useAuthState';
 import { ROUTES } from '../../constants';
-import { firebase, db } from '../../firebase';
 
 const withAuthorization = (authCondition) => (Component) => {
   const WithAuthorization = (props) => {
     let history = useHistory();
     const [dbUser, setDbUser] = useState(null);
+    const { authUser, loading } = useAuthState();
     
     useEffect(() => {
-      const unsubscribe = firebase.auth.onAuthStateChanged(authUser => {
+      if ( !loading ) {
         if (!authCondition(authUser)) {
           history.push(ROUTES.SIGN_IN.path);
         } else {
@@ -20,14 +21,13 @@ const withAuthorization = (authCondition) => (Component) => {
               setDbUser(doc.data());
             })
         }
-      });
-      return () => unsubscribe();
-    }, [history])
+      }
+    }, [authUser, loading, history])
     
     return (
-      <AuthUserContext.Consumer>
-        {authUser => authUser ? <Component {...props} authUser={authUser} dbUser={dbUser} /> : null }
-      </AuthUserContext.Consumer>
+      <>
+        {authUser ? <Component {...props} authUser={authUser} dbUser={dbUser} /> : null }
+      </>
     );
   }
   return WithAuthorization;

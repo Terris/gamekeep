@@ -1,9 +1,12 @@
-import AuthUserContext from './context';
-import withAuthentication from './withAuthentication';
+import { AuthUserContext, useAuthUserContext } from './context';
+import { useAuthState } from './useAuthState';
 import withAuthorization from './withAuthorization';
+import withPermission from './withPermission';
 
 export {
   AuthUserContext,
-  withAuthentication,
+  useAuthUserContext,
+  useAuthState,
   withAuthorization,
+  withPermission,
 };

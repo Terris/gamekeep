@@ -1,5 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
-const AuthUserContext = React.createContext(null);
+export const AuthUserContext = React.createContext({
+  authUser: null,
+  dbUser: null,
+  loading: null,
+});
 
-export default AuthUserContext;
+export const useAuthUserContext = () => {
+  const { authUser, dbUser, loading } = useContext(AuthUserContext)
+  return { authUser, dbUser, loading }
+};

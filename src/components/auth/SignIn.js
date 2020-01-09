@@ -16,7 +16,7 @@ const SignIn = () => {
     event.preventDefault();
     auth.signInWithEmailAndPassword(email, password)
     .then(response => {
-      history.push(ROUTES.DASHBOARD.path)
+      history.push(ROUTES.HOME.path)
     })
     .catch(error => setMessage(error.message))
   }
