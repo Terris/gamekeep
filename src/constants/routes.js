@@ -8,4 +8,5 @@ export const ROUTES = {
   WELCOME:              {path: '/welcome', title: "Welcome"},
   DASHBOARD:            {path: '/dashboard', title: "Dashboard"},
   FRIENDS:              {path: '/friends', title: "Friends"},
+  NOT_ALLOWED:          {path: '/notallowed', title: "Not Allowed"},
 }

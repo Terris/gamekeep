@@ -1,10 +1,5 @@
-import React from 'react';
-import { withAuthorization } from '../session';
+import Dashboard from './Dashboard';
 
-const Dashboard = () => (
-  <div className="dashboard">
-  </div>
-);
-
-const condition = authUser => !!authUser;
-export default withAuthorization(condition)(Dashboard);
+export {
+  Dashboard,
+}

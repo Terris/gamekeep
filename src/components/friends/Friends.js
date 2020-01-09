@@ -1,5 +1,5 @@
 import React from 'react';
-import { withAuthorization } from '../session';
+import { withPermission } from '../session';
 import { useFriends } from './hooks';
 import { Loader } from '../ui';
 import AddFriend from './AddFriend';
@@ -7,6 +7,7 @@ import Friend from './Friend';
 import './friends.css';
 
 const Friends = ({ authUser, dbUser }) => {
+  
   const { friends, loading } = useFriends(authUser.uid);
   
   return (
@@ -22,4 +23,4 @@ const Friends = ({ authUser, dbUser }) => {
 }
 
 const condition = authUser => !!authUser;
-export default withAuthorization(condition)(Friends);
+export default withPermission(condition)(Friends);

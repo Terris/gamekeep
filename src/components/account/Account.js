@@ -1,31 +1,20 @@
 import React from 'react';
-import { withAuthorization } from '../session';
-import { useRealtimeUser } from '../user';
+import { withPermission } from '../session';
 import Avatar from '../ui/avatar';
 import EditUser from './EditUser';
-import { Loader, Message } from '../ui';
 import './account.css';
 
-const Account = ({ authUser }) => {
-  const { message, loading, user} = useRealtimeUser(authUser.uid);
-  
-  if ( loading ) {
-    return <Loader />
-  }
-  
-  return (
-    <div className="ui-account">
-      <div className="ui-account-header">
-        {message && <Message message={message} />}
-        <Avatar user={user} wrapperClass={"ui-account-avatar"} />
-        <h2 className="ui-account-display-name">{user.displayName}</h2>
-        <p className="ui-account-email">{authUser.email}</p>
-      </div>
-      <hr/>
-      <EditUser authUser={authUser} user={user} />
+const Account = ({ authUser, dbUser }) => (
+  <div className="ui-account">
+    <div className="ui-account-header">
+      <Avatar dbUser={dbUser} wrapperClass={"ui-account-avatar"} />
+      <h2 className="ui-account-display-name">{dbUser.displayName}</h2>
+      <p className="ui-account-email">{authUser.email}</p>
     </div>
-  )
-}
+    <hr/>
+    <EditUser authUser={authUser} dbUser={dbUser} />
+  </div>
+);
 
 const condition = authUser => !!authUser;
-export default withAuthorization(condition)(Account);
+export default withPermission(condition)(Account);
