@@ -1,10 +1,11 @@
 import React from 'react';
 import { withPermission } from '../session';
+import { Games } from '../games';
 
 const Dashboard = ({ authUser, dbUser }) => {
   return (
     <div className="dashboard">
-      <h1>Dash</h1>
+      <Games dbUser={dbUser} />
     </div>
   )
 };

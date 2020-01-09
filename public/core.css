@@ -34,6 +34,11 @@ button { border: none; outline: none; background: transparent; }
 button.btn { padding: 12px 20px; color: #fff; background: #0363b7; transition: background-color 0.2s ease; }
 button.btn:hover { background: #0f86ef; }
 
+button.btn:disabled {
+  background: #ccc;
+  cursor: wait;
+}
+
 /* Input
 ------------------------------------ */
 input[type="text"],

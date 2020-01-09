@@ -9,4 +9,8 @@ export const ROUTES = {
   DASHBOARD:            {path: '/dashboard', title: "Dashboard"},
   FRIENDS:              {path: '/friends', title: "Friends"},
   NOT_ALLOWED:          {path: '/notallowed', title: "Not Allowed"},
+  GAMES:                {path: '/games', title: "Games"},
+  
+  NEW_GAME:             {path: '/games/new', title: "New Game" },
+  SHOW_GAME:            {path: '/games/:id', title: "GameKeep"},
 }

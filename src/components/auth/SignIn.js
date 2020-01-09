@@ -33,7 +33,6 @@ const SignIn = () => {
           <label htmlFor="email">Email</label>
           <input
             type="email"
-            label='Email'
             name="email"
             id="email"
             placeholder='Email'

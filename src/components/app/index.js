@@ -19,6 +19,9 @@ import { ForgotPassword } from '../auth';
 import { Account } from '../account';
 import { Friends } from '../friends';
 import { NotAllowed, NoMatch } from '../static';
+import { NewGame } from '../games';
+import { Game } from '../games';
+
 // CSS
 import './app.css';
 
@@ -44,6 +47,8 @@ const App = () => {
             <Route exact path={ROUTES.FRIENDS.path} component={Friends} />
             <Route exact path={ROUTES.ACCOUNT.path} component={Account} />
             <Route exact path={ROUTES.NOT_ALLOWED.path} component={NotAllowed} />
+            <Route exact path={ROUTES.NEW_GAME.path} component={NewGame} />
+            <Route exact path={ROUTES.SHOW_GAME.path} component={Game} />
             <Route component={NoMatch} />
           </Switch>
         </main>

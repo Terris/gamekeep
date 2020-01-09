@@ -63,3 +63,15 @@ export const removeFriend = (friend) => {
   batch.delete(friendship(friend.inverse_id));
   return batch.commit();
 }
+
+// Games API
+// ----------------------------------
+
+export const games = (uid) =>
+  db.collection("games").where('uid', "==", uid)
+
+export const game = (id) =>
+  db.collection("games").doc(id)
+
+export const createGame = (uid, name, players) =>
+  db.collection("games").add({ uid: uid, name: name, players: players})
