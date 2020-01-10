@@ -39,15 +39,14 @@ export const useGame = (id) => {
 
 
 export const usePlayers = (gamePlayers) => {
-  const [players, setPlayers] = useState();
+  const [players, setPlayers] = useState([]);
   useEffect(() => {
-    let newPlayers = [];
     gamePlayers.forEach(player => {
       db.user(player)
         .get()
         .then(doc => {
-          newPlayers.push(doc.data())
-          setPlayers(newPlayers);
+          let pData = doc.data();
+          setPlayers(p => [...p, pData]);
         })
     });
   }, [gamePlayers]);

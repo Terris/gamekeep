@@ -1,3 +1,4 @@
+.avatar-wrapper { display: flex; align-items: center; justify-content: center; }
 .avatar-wrapper.avatar-inline { padding-right: 0; }
 .avatar {
   border-radius: 100%;

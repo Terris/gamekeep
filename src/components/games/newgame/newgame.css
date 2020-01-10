@@ -1,0 +1,10 @@
+.selectplayers-list { list-style-type: none; }
+.selectplayers-list-item {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+.selectplayers-list-item:hover { background: #e2ffe2; }
+.selectplayers-list-item.selected { background: #88c588; }

@@ -6,5 +6,5 @@
 }
 .gamelistitem:hover { background: #f1f1f1; }
 .gamelistitem .gamelistitem-avatar {
-  padding-left: 0;
+  padding-right: 0;
 }

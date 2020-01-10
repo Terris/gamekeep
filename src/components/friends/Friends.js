@@ -8,7 +8,7 @@ import './friends.css';
 
 const Friends = ({ authUser, dbUser }) => {
   
-  const { friends, loading } = useFriends(authUser.uid);
+  const { friends, loading } = useFriends(dbUser.uid);
   
   return (
     <div className="friends">
