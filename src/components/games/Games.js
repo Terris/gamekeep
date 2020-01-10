@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { ROUTES } from '../../constants'
 import { Loader } from '../ui';
 import { useGames } from './hooks';
@@ -7,15 +7,15 @@ import GameListItem from './GameListItem';
 import './games.css';
 
 const Games = ({ dbUser }) => {
-  
+  let history = useHistory();
   const { games, loading } = useGames( dbUser.uid );
   
   return (
     <div className="games" data-testid="games">
       {loading && <Loader />}
-      <p><Link to={ROUTES.NEW_GAME.path}>New Game</Link></p>
+      <p><button onClick={() => history.push(ROUTES.NEW_GAME.path)}>New Game</button></p>
       {games.length
-        ? (games.map(game => <GameListItem key={game.id} game={game} />))
+        ? (games.map(game => <GameListItem key={game.id} game={game} dbUser={dbUser} />))
         : (<p className="text-muted">You haven't added any games yet.</p>)
       }
     </div>

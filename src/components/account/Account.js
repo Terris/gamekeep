@@ -7,7 +7,7 @@ import './account.css';
 const Account = ({ authUser, dbUser }) => (
   <div className="ui-account">
     <div className="ui-account-header">
-      <Avatar dbUser={dbUser} wrapperClass={"ui-account-avatar"} />
+      <Avatar user={dbUser} wrapperClass={"ui-account-avatar"} />
       <h2 className="ui-account-display-name">{dbUser.displayName}</h2>
       <p className="ui-account-email">{authUser.email}</p>
     </div>

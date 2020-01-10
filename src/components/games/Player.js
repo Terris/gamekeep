@@ -6,12 +6,12 @@ const Player = ({ player }) => {
   if (loading) { return null }
   
   return (
-    <div className="player">
+    <>
       {!!user && (
-        <p>{user.displayName}</p>
+        <span> {user.displayName}</span>
       )
       }
-    </div>
+    </>
   )
 }
 

@@ -16,7 +16,7 @@ export const useGames = (uid) => {
         setLoading(false);
       })
     return () => unsubscribe();
-  })
+  }, [uid])
   
   return { games, loading };
 }
@@ -32,7 +32,24 @@ export const useGame = (id) => {
         setLoading(false);
       })
     return () => unsubscribe();
-  })
+  }, [id])
   
   return { game, loading };
+}
+
+
+export const usePlayers = (gamePlayers) => {
+  const [players, setPlayers] = useState();
+  useEffect(() => {
+    let newPlayers = [];
+    gamePlayers.forEach(player => {
+      db.user(player)
+        .get()
+        .then(doc => {
+          newPlayers.push(doc.data())
+          setPlayers(newPlayers);
+        })
+    });
+  }, [gamePlayers]);
+  return { players }
 }
