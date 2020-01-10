@@ -2,7 +2,6 @@ import React from 'react';
 import { withPermission } from '../session';
 import { useParams } from 'react-router-dom';
 import { useGame } from './hooks';
-import GameListItem from './GameListItem';
 import { Loader } from '../ui';
 
 const Game = () => {
