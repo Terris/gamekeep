@@ -37,7 +37,7 @@ const Header = () => {
   
   return (
     <header className="header" data-testid="comp-header">
-      <h1 className="logo"><Link to={ROUTES.HOME.path}>GameKeep</Link></h1>
+      <h1 className="logo"><Link to={ROUTES.HOME.path}>G</Link></h1>
       <PageTitle />
       <nav className="header-actions">
         {authUser ? <NavigationAuth authUser={authUser} /> : <NavigationNonAuth />}

@@ -13,7 +13,7 @@ const Friend = ({ dbUser, friend }) => {
     <>
       {!!message && <Message message={message} />}
       <div className="friend">
-        <Avatar user={dbUser} size="small" wrapperClass="avatar-inline" />
+        <Avatar user={user} size="small" wrapperClass="avatar-inline" />
         <p className="friend-name">{user.displayName}</p>
         <div className={`friend-status friend-status-${friend.status}`}>
           {friend.status ===  FRIEND_STATUS.REQUESTER
