@@ -12,7 +12,16 @@ const GameListItem = ({ game, dbUser }) => {
       {!!players && players.map((player, index) => <Avatar key={"avatar-" + player.uid} user={player} size="small" wrapperClass="gamelistitem-avatar" />)}
       <p>
         <strong>{game.name}</strong> with
-        {!!players && players.map((player, index) => <span key={"name-" + player.uid}> {player.displayName} {`${index < players.length-1 ? '&' : '' }`}</span>)}
+        {!!players && players.map((player, index) =>
+          <span key={"name-" + player.uid}>
+            {` ${player.displayName}${index === players.length-2
+                ? ' & '
+                : index < players.length-1
+                ? ', '
+                : ''}
+            `}
+          </span>
+        )}
       </p>
     </div>
   )

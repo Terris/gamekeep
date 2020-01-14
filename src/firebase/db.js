@@ -11,7 +11,7 @@ export const userByEmail = (email) =>
   db.collection('users').where("email", "==", email).limit(1)
 
 export const createUser = (displayName, email, photoURL, uid) =>
-  db.collection('users').doc(uid).set({ displayName, email, photoURL, uid })
+  db.collection('users').doc(uid).set({ displayName, email, photoURL, uid, created_at: moment().format() })
 
 // Alerts API
 // ----------------------------------
@@ -22,7 +22,7 @@ export const userAlert = (uid, id) =>
   user(uid).collection('alerts').doc(id)
 
 export const createUserAlert = (uid, alert) =>
-  user(uid).collection('alerts').add({ ...alert })
+  user(uid).collection('alerts').add({ ...alert, created_at: moment().format() })
 
 export const deleteUserAlert = (uid, alertId) =>
   user(uid).collection('alerts').doc(alertId).delete()
@@ -36,8 +36,8 @@ export const friendship = (id)  =>
   db.collection('friendships').doc(id)
 
 export const createFriendship = async (user, friend) => {
-  let friendshipOne = await db.collection('friendships').add({ uid: user.uid, friend_id: friend.uid})
-  let friendshipTwo = await db.collection('friendships').add({ uid: friend.uid, friend_id: user.uid})
+  let friendshipOne = await db.collection('friendships').add({ uid: user.uid, friend_id: friend.uid, created_at: moment().format()})
+  let friendshipTwo = await db.collection('friendships').add({ uid: friend.uid, friend_id: user.uid, created_at: moment().format()})
   let inviteAlert = await createUserAlert(friend.uid, {type: "invite", message: `${user.displayName} wants to be friends! Click here to accept.`, link: "FRIENDS" });
   friendshipOne = await friendshipOne.id;
   friendshipTwo = await friendshipTwo.id;
@@ -69,19 +69,19 @@ export const removeFriend = (friend) => {
 // ----------------------------------
 
 export const games = (uid) =>
-  db.collection("games").where('uid', "==", uid)
+  db.collection("games").where('players', "array-contains", uid)
 
 export const game = (id) =>
   db.collection("games").doc(id)
 
 export const createGame = (uid, name, players) =>
-  db.collection("games").add({ uid: uid, name: name, players: players, scores: {}})
+  db.collection("games").add({ uid: uid, name: name, players: players, scores: {}, created_at: moment().format() })
 
 export const addGameScore = (gameId, playerId, score) => {
   return game(gameId).set({
     scores: {
       [playerId]: firestore.FieldValue.arrayUnion({
-        timestamp: moment().format(),
+        created_at: moment().format(),
         score
       })
     }
