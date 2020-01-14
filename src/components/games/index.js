@@ -1,5 +1,5 @@
 import Games from './Games';
-import Game from './Game';
+import Game from './game/Game';
 import NewGame from './newgame/NewGame';
 
 export {

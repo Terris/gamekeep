@@ -1,4 +1,5 @@
-import { db } from './firebase';
+import moment from 'moment';
+import { db, firestore } from './firebase';
 import { FRIEND_STATUS } from '../constants'
 
 // User API
@@ -74,4 +75,16 @@ export const game = (id) =>
   db.collection("games").doc(id)
 
 export const createGame = (uid, name, players) =>
-  db.collection("games").add({ uid: uid, name: name, players: players})
+  db.collection("games").add({ uid: uid, name: name, players: players, scores: {}})
+
+export const addGameScore = (gameId, playerId, score) => {
+  return game(gameId).set({
+    scores: {
+      [playerId]: firestore.FieldValue.arrayUnion({
+        timestamp: moment().format(),
+        score
+      })
+    }
+  }, { merge: true })
+}
+  

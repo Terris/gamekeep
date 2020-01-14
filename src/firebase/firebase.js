@@ -19,10 +19,12 @@ const emailAuthProvider = firebase.auth.EmailAuthProvider;
 const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
 const db = firebase.firestore();
 const auth = firebase.auth();
+const firestore = firebase.firestore;
 
 export {
   emailAuthProvider,
   googleAuthProvider,
   db,
   auth,
+  firestore,
 };

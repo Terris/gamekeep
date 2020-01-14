@@ -1,0 +1,8 @@
+.gameplayercard {
+  padding: 1rem 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.gameplayercard .player { width: 50%; }

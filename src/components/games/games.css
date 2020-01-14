@@ -7,4 +7,10 @@
 .gamelistitem:hover { background: #f1f1f1; }
 .gamelistitem .gamelistitem-avatar {
   padding-right: 0;
+  padding-left: 0;
+  margin-left: -10px;
+}
+.gamelistitem .gamelistitem-avatar:first-child {
+  padding-left: 20px;
+  margin-left: 0;
 }

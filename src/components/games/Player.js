@@ -8,7 +8,7 @@ const Player = ({ player }) => {
   return (
     <>
       {!!user && (
-        <span> {user.displayName}</span>
+        <span className="player"> {user.displayName}</span>
       )
       }
     </>
