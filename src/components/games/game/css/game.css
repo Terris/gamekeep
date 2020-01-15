@@ -6,3 +6,5 @@
 }
 
 .gameplayercard .player { width: 50%; }
+
+.gameplayercard-score { width: 25%; text-align: right; }

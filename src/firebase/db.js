@@ -75,16 +75,17 @@ export const game = (id) =>
   db.collection("games").doc(id)
 
 export const createGame = (uid, name, players) =>
-  db.collection("games").add({ uid: uid, name: name, players: players, scores: {}, created_at: moment().format() })
+  db.collection("games").add({ uid: uid, name: name, players: players, created_at: moment().format() })
+
+export const gameScores = (gameId) =>
+  game(gameId).collection("scores")
+
+export const gamePlayerScores = (gameId, playerId) =>
+  gameScores(gameId).doc(playerId)
 
 export const addGameScore = (gameId, playerId, score) => {
-  return game(gameId).set({
-    scores: {
-      [playerId]: firestore.FieldValue.arrayUnion({
-        created_at: moment().format(),
-        score
-      })
-    }
+  return game(gameId).collection("scores").doc(playerId).set({
+    scores: firestore.FieldValue.arrayUnion(score)
   }, { merge: true })
 }
   

@@ -17,7 +17,6 @@ export const useGames = (uid) => {
       })
     return () => unsubscribe();
   }, [uid])
-  
   return { games, loading };
 }
 

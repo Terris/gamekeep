@@ -23,10 +23,7 @@ const Game = () => {
         <div key={player} className="gameplayercard">
           <Player player={player} />
           <div className="gameplayercard-score">
-            {!!game.scores[player]
-              ? (<PlayerScore game={game} player={player} />)
-              : ("0")
-            }
+            <PlayerScore gameId={id} playerId={player} />
           </div>
           <AddScoreBtn gameId={id} playerId={player} />
         </div>

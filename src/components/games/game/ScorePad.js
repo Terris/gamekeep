@@ -26,6 +26,7 @@ const ScorePad = ({ gameId, playerId, closeScorePad }) => {
   }
   
   const commitPlayerScore = () => {
+    
     db.addGameScore(gameId, playerId, parseInt(sign + score))
       .then(() => closeScorePad())
       .catch(error => setMessage({type: "error", message: error.message}))
@@ -79,7 +80,7 @@ const ScorePad = ({ gameId, playerId, closeScorePad }) => {
             key="scorepad-btn-submit"
             className={`scorepad-btn scorepad-btn-submit`}
             onClick={() => commitPlayerScore()}>
-            submit
+            &crarr;
           </button>
         </div>
       </div>
