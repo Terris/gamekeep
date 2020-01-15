@@ -1,7 +1,7 @@
 import Friends from './Friends';
-import { useFriends } from './hooks';
+import { useAcceptedFriends } from './hooks';
 
 export {
   Friends,
-  useFriends,
+  useAcceptedFriends,
 }

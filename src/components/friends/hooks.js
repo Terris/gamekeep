@@ -20,3 +20,23 @@ export const useFriends = uid => {
   }, [uid]);
   return { friends, loading };
 };
+
+export const useAcceptedFriends = uid => {
+  const [loading, setLoading] = useState(true);
+  const [friends, setFriends] = useState([]);
+  
+  useEffect(() => {
+    let unsubscribe = db.friendships(uid)
+      .where('uid', '==', uid).where('status', '==', 'accepted')
+      .onSnapshot(snapshot => {
+        const newFriends = snapshot.docs.map(friend => ({
+          id: friend.id,
+          ...friend.data(),
+        }));
+      setFriends(newFriends);
+      setLoading(false);
+    });
+    return () => unsubscribe();
+  }, [uid]);
+  return { friends, loading };
+};

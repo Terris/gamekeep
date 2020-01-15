@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { useFriends } from '../../friends';
+import { useAcceptedFriends } from '../../friends';
 import SelectPlayersItem from './SelectPlayersItem';
 
 const SelectPlayers = ({ dbUser, handleSelection }) => {
   const [ players, setPlayers ] = useState([]);
-  const { friends } = useFriends(dbUser.uid);
+  const { friends } = useAcceptedFriends(dbUser.uid);
   
   const selectPlayer = (id) =>  {
     let playerPos = players.indexOf(id);
