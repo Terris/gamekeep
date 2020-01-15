@@ -54,7 +54,7 @@ export const acceptFriendRequest = (user, friend) => {
   batch.update(friendship(friend.id), { status: FRIEND_STATUS.ACCEPTED } );
   batch.update(friendship(friend.inverse_id), { status: FRIEND_STATUS.ACCEPTED } );
   batch.delete(userAlert(friend.uid, friend.alertRef));
-  createUserAlert(friend.friend_id, {type: "invite_accepted", message: `${user.displayName} accepted your friend request!`, link: "FRIENDS" });
+  createUserAlert(friend.friend_id, {type: "invite_accepted", message: `${user.displayName} accepted your friend request!`, link: "/friends" });
   return batch.commit();
 }
 

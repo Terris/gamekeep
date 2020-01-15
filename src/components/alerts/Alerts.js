@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBell, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { db } from '../../firebase';
 import { useAlerts } from './hooks';
-import { ROUTES } from '../../constants';
 import { Drawer, Message } from '../ui';
 import './alerts.css';
 
@@ -29,7 +28,7 @@ const Alerts = ({ authUser }) => {
           ? alerts.map(alert => (
             <div className="alert-item" key={alert.id}>
               <Link
-                to={ROUTES[alert.link].path}
+                to={alert.link}
                 className={`alerts-alert alert-${alert.type}`}
               >
                 {alert.message}

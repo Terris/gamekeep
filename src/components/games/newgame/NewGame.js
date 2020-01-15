@@ -27,7 +27,7 @@ const NewGame = ({ dbUser }) => {
       let playersWithSelf = [dbUser.uid, ...players];
       db.createGame(dbUser.uid, name, playersWithSelf)
         .then(res => history.push(`${ROUTES.GAMES.path}/${res.id}`))
-        .catch(error => setMessage({type: error, message: message.message}));
+        .catch(error => setMessage({type: error, message: error.message}));
     }
   }
   
