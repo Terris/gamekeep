@@ -5,6 +5,15 @@
   align-items: center;
 }
 
-.gameplayercard .player { width: 50%; }
+.gameplayercard .gameplayercard-player {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 50%;
+}
 
-.gameplayercard-score { width: 25%; text-align: right; }
+.gameplayercard .gameplayercard-avatar {
+  padding: 0 20px 0 0;
+}
+
+.gameplayercard .gameplayercard-score { width: 25%; text-align: right; }

@@ -49,10 +49,9 @@
 .scorepad-btn.scorepad-btn-0 { width: 100%; }
 .scorepad-btn.scorepad-btn-del { background: #929292; }
 .scorepad-btn.scorepad-btn-sign-plus.active,
-.scorepad-btn.scorepad-btn-sign-minus.active {
-  background: #5e6794;
-}
-
+.scorepad-btn.scorepad-btn-sign-minus.active { background: #867683; }
+.scorepad-btn.scorepad-btn-submit { background: #C7AAAE; }
+.scorepad-btn.scorepad-btn-submit:hover { background: #a78c90; }
 .scorepad-btn:hover {
   color: #fff;
   background: #696868;

@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { db } from '../../../firebase';
 
-const PlayerScore = ({ gameId, playerId }) => {
+const GamePlayerScore = ({ gameId, playerId }) => {
   const [score, setScore] = useState(0);
   
   useEffect(() => {
-    
     const unsubscribe = db.gamePlayerScores(gameId, playerId)
       .onSnapshot(doc => {
         if ( doc.data() ) {
@@ -26,4 +25,4 @@ const PlayerScore = ({ gameId, playerId }) => {
   )
 }
 
-export default PlayerScore
+export default GamePlayerScore

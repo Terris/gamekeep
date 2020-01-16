@@ -29,10 +29,9 @@
   justify-content: center;
   align-items: center;
   line-height: 1;
-  transform: rotate(-3deg);
   transition: background-color 0.2s ease;
 }
-.logo a:hover { background: #F1E0DE; color: #fff; }
+.logo a:hover { background: #c1c1c1; color: #fff; }
 .pagetitle { font-size: 1rem; }
 .header .header-actions { display: flex; }
 .header .nav-primary .ui-drawer-contents-inner { display: flex; flex-direction: column; }

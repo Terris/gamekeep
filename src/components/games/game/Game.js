@@ -3,9 +3,7 @@ import { useParams } from 'react-router-dom';
 import { withPermission } from '../../session';
 import { useGame } from '../hooks';
 import { Loader } from '../../ui';
-import Player from '../Player';
-import PlayerScore from './PlayerScore';
-import AddScoreBtn from './AddScoreBtn';
+import GamePlayers from './GamePlayers';
 import './css/game.css';
 
 const Game = () => {
@@ -17,17 +15,13 @@ const Game = () => {
   }
   return (
     <div className="game">
-      <h2>{game.name}</h2>
-      <hr/>
-      {game.players.map(player =>
-        <div key={player} className="gameplayercard">
-          <Player playerId={player} />
-          <div className="gameplayercard-score">
-            <PlayerScore gameId={id} playerId={player} />
-          </div>
-          <AddScoreBtn gameId={id} playerId={player} />
-        </div>
-      )}
+      {!!game &&
+        <>
+          <h2>{game.name}</h2>
+          <hr/>
+          <GamePlayers gameId={id} game={game} />
+        </>
+      }
     </div>
   )
 };

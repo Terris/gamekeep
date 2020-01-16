@@ -39,7 +39,6 @@ export const useGame = (id) => {
 
 export const usePlayers = (gamePlayers) => {
   const [players, setPlayers] = useState([]);
-  console.log("render");
   useEffect(() => {
     setPlayers([]);
     gamePlayers.forEach(player => {
