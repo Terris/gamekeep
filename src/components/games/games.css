@@ -1,12 +1,13 @@
-.games {}
+.newgame-btn {
+  width: 100%;
+}
 .gamelistitem {
   display: flex;
   align-items: center;
   cursor: pointer;
-  border-radius: 3px;
   transition: background-color 0.2s ease;
 }
-.gamelistitem:hover { background: #eff3ff; }
+.gamelistitem:hover { background: #F1E0DE; }
 .gamelistitem .gamelistitem-avatar {
   padding-right: 0;
   padding-left: 0;
@@ -15,4 +16,10 @@
 .gamelistitem .gamelistitem-avatar:first-child {
   padding-left: 20px;
   margin-left: 0;
+}
+
+@media screen and (min-width: 1025px) {
+  .gamelistitem {
+    border-radius: 3px;
+  }
 }

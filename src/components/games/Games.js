@@ -13,7 +13,7 @@ const Games = ({ dbUser }) => {
   return (
     <div className="games" data-testid="games">
       {loading && <Loader />}
-      <p><button onClick={() => history.push(ROUTES.NEW_GAME.path)} className="btn">New Game</button></p>
+      <p className="text-center"><button onClick={() => history.push(ROUTES.NEW_GAME.path)} className="btn newgame-btn">New Game</button></p>
       {games.length
         ? (games.map(game => <GameListItem key={game.id} game={game} dbUser={dbUser} />))
         : (<p className="text-muted">You haven't added any games yet.</p>)

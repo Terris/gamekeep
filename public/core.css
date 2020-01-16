@@ -21,24 +21,22 @@ svg  { max-height: 100% }
 /* Base
 ------------------------------------ */
 
-body { font-family: sans-serif; font-size: 1rem; background: #fff; }
-
+body { font-family: sans-serif; font-size: 1rem; background: #fff; color: #424242; }
 h1,h2,h3,h4,h5,h6,p,ul,ol,figure,.field { line-height: 1.4; padding: 1rem 20px; }
-hr { border:none; border-bottom: 2px solid #efefef; margin: 1rem 20px; }
+hr { border:none; border-bottom: 1px solid #dcdcdc; margin: 1rem 20px; }
 
 /* Link
 ------------------------------------ */
 
-a,button { color: #5a7bd8; text-decoration: none; transition: color 0.2s ease; cursor: pointer; }
-a:hover,button:hover { color: #7293ef; }
+a,button { color: #393D52; text-decoration: none; transition: color 0.2s ease; cursor: pointer; }
+a:hover,button:hover { color: #847885; }
 
 /* Button
 ------------------------------------ */
 
 button { border: none; outline: none; background: transparent; }
-button.btn { padding: 12px 20px; color: #fff; background: #5a7bd8; border-radius: 3px; transition: background-color 0.2s ease; }
-button.btn:hover { background: #7293ef; }
-
+button.btn { padding: 12px 20px; color: #fff; background: #393D52; border-radius: 3px; transition: background-color 0.2s ease; }
+button.btn:hover { background: #847885; }
 button.btn:disabled {
   background: #ccc;
   cursor: wait;
@@ -66,7 +64,7 @@ input[type="text"]:focus,
 input[type="email"]:focus,
 input[type="password"]:focus,
 input[type="number"]:focus {
-  border-bottom: 1px solid #7293ef;
+  border-bottom: 1px solid #D3A5A3;
 }
 /* disabled */
 input[type="text"]:disabled,
@@ -79,7 +77,7 @@ input[type="number"]:disabled {
 
 /* Label
 ------------------------------------ */
-label { font-size: 0.8rem; font-weight: 700; color: #5a7bd8; }
+label { font-size: 0.8rem; font-weight: 700; color: #393D52; }
 
 
 /* Template

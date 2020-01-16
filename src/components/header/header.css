@@ -10,15 +10,31 @@
   line-height: 1.4;
   text-align: left;
   padding: 1rem 20px;
-  color: #8e8e8e;
-  
+  color: #847885;
 }
 .header a:hover,
-.header button:hover { color: #7293ef; }
-.logo { font-size: 1rem; font-weight: 400; padding: 0; }
+.header button:hover { color: #c1c1c1; }
+.logo { font-size: 1rem; line-height: 1; font-weight: 400; padding: 0; }
+.logo a {
+  display: flex;
+  width:30px;
+  height:30px;
+  text-align: center;
+  background: #424242;
+  color: #fff;
+  font-weight: 700;
+  border-radius: 3px;
+  margin: 3px 20px;
+  padding: 0;
+  justify-content: center;
+  align-items: center;
+  line-height: 1;
+  transform: rotate(-3deg);
+  transition: background-color 0.2s ease;
+}
+.logo a:hover { background: #F1E0DE; color: #fff; }
 .pagetitle { font-size: 1rem; }
-
 .header .header-actions { display: flex; }
 .header .nav-primary .ui-drawer-contents-inner { display: flex; flex-direction: column; }
 .header .nav-primary .ui-drawer-contents-inner a,
-.header .nav-primary .ui-drawer-contents-inner button { border-bottom: 1px solid #ccc; }
+.header .nav-primary .ui-drawer-contents-inner button { border-bottom: 1px solid #dcdcdc; }

@@ -1,11 +1,10 @@
 .loader {
   position: fixed;
-  top: 0;
+  top: 3rem;
   right: 0;
   bottom: 0;
   left: 0;
   background: #fff;
-  
   display: flex;
   justify-content: center;
   align-items: center;
