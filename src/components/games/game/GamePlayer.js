@@ -10,9 +10,9 @@ const GamePlayer = ({ gameId, player }) => (
       {player.displayName}
     </div>
     <div className="gameplayercard-score">
-      <GamePlayerScore gameId={gameId} playerId={player.uid} />
+      <GamePlayerScore gameId={gameId} player={player} />
     </div>
-    <AddScoreBtn gameId={gameId} playerId={player} />
+    <AddScoreBtn gameId={gameId} playerId={player.uid} />
   </div>
 )
 

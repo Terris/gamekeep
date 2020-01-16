@@ -52,3 +52,23 @@ export const usePlayers = (gamePlayers) => {
   }, [gamePlayers]);
   return { players }
 }
+
+export const usePlayerScores = (gameId, playerId) => {
+  const [scores, setScores] = useState([]);
+  const [scoreTotal, setScoreTotal] = useState(0);
+  useEffect(() => {
+    const unsubscribe = db.gamePlayerScores(gameId, playerId)
+      .onSnapshot(doc => {
+        if ( doc.data() ) {
+          setScores(doc.data().scores);
+          let newScoreTotal = 0;
+          doc.data().scores.forEach(score => {
+            newScoreTotal = newScoreTotal + score;
+          })
+          setScoreTotal(newScoreTotal);
+        }
+      })
+      return () => unsubscribe();
+  }, [gameId, playerId])
+  return {scores, scoreTotal}
+}

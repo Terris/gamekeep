@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { Avatar } from '../ui';
 import { usePlayers } from './hooks';
 
-const GameListItem = ({ game, dbUser }) => {
+const GamesGame = ({ game, dbUser }) => {
   let history = useHistory();
   const { players } = usePlayers(game.players);
   
@@ -27,4 +27,4 @@ const GameListItem = ({ game, dbUser }) => {
   )
 }
 
-export default GameListItem;
+export default GamesGame;

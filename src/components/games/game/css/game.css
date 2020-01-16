@@ -4,16 +4,34 @@
   justify-content: space-between;
   align-items: center;
 }
-
 .gameplayercard .gameplayercard-player {
   display: flex;
   justify-content: flex-start;
   align-items: center;
   width: 50%;
 }
-
-.gameplayercard .gameplayercard-avatar {
-  padding: 0 20px 0 0;
-}
-
+.gameplayercard .gameplayercard-avatar { padding: 0 20px 0 0; }
 .gameplayercard .gameplayercard-score { width: 25%; text-align: right; }
+
+.playerscore { font-size: 2rem; }
+.playerscore-total { font-weight: 700; cursor: pointer; }
+.playerscore-scores {
+  position: fixed;
+  background: #fff;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.playerscore-scores-list { list-style-type: none; }
+.playerscore-scores-list li { min-width: 200px; }
+.playerscore-scores-list li:last-child { border-top: 1px solid #ccc; font-weight: 700; }
+.close-playerscores-btn {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 1rem 20px;
+}

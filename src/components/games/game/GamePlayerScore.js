@@ -1,27 +1,31 @@
-import React, { useState, useEffect } from 'react';
-import { db } from '../../../firebase';
+import React, { useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import { usePlayerScores } from '../hooks';
 
-const GamePlayerScore = ({ gameId, playerId }) => {
-  const [score, setScore] = useState(0);
-  
-  useEffect(() => {
-    const unsubscribe = db.gamePlayerScores(gameId, playerId)
-      .onSnapshot(doc => {
-        if ( doc.data() ) {
-          let newScore = 0;
-          doc.data().scores.forEach(score => {
-            newScore = newScore + score;
-          })
-          setScore(newScore);
-        }
-      })
-      return () => unsubscribe();
-  }, [gameId, playerId])
-  
+const GamePlayerScore = ({ gameId, player }) => {
+  const [showScores, setShowScores] = useState(false);
+  const {scores, scoreTotal} = usePlayerScores(gameId, player.uid)
   return (
-    <span className="playerscore">
-      {score}
-    </span>
+    <div className="playerscore">
+      <span className="playerscore-total" onClick={() => setShowScores(true)}>{scoreTotal}</span>
+      {!!showScores && (
+        <div className="playerscore-scores">
+          <button
+            className="close-playerscores-btn"
+            onClick={() => setShowScores(false)}>
+            <FontAwesomeIcon icon={faArrowLeft} />
+          </button>
+          <div className="playerscore-scores-inner">
+            <h4>{player.displayName}</h4>
+            <ul className="playerscore-scores-list">
+              {scores.length > 0 && scores.map((score, index) => <li key={index}>{score}</li>)}
+              <li>{scoreTotal}</li>
+            </ul>
+          </div>
+        </div>
+      )}
+    </div>
   )
 }
 
