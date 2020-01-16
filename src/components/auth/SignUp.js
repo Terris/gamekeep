@@ -43,7 +43,7 @@ const SignUp = () => {
             type="email"
             name="email"
             id="email"
-            placeholder='Email'
+            placeholder='you@example.com'
             value={email}
             onChange={e => setEmail(e.currentTarget.value)} />
         </div>
@@ -54,7 +54,7 @@ const SignUp = () => {
             label='Password'
             name="password"
             id="password"
-            placeholder='Password'
+            placeholder='&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;'
             value={password}
             onChange={e => setPassword(e.currentTarget.value)} />
         </div>
@@ -65,7 +65,7 @@ const SignUp = () => {
             label='Confirm Password'
             name="passwordConfirmation"
             id="passwordConfirmation"
-            placeholder='Confirm Password'
+            placeholder='&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;'
             value={passwordConfirmation}
             onChange={e => setPasswordConfirmation(e.currentTarget.value)} />
         </div>

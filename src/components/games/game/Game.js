@@ -21,7 +21,7 @@ const Game = () => {
       <hr/>
       {game.players.map(player =>
         <div key={player} className="gameplayercard">
-          <Player player={player} />
+          <Player playerId={player} />
           <div className="gameplayercard-score">
             <PlayerScore gameId={id} playerId={player} />
           </div>

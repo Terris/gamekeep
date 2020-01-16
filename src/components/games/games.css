@@ -3,8 +3,10 @@
   display: flex;
   align-items: center;
   cursor: pointer;
+  border-radius: 3px;
+  transition: background-color 0.2s ease;
 }
-.gamelistitem:hover { background: #f1f1f1; }
+.gamelistitem:hover { background: #eff3ff; }
 .gamelistitem .gamelistitem-avatar {
   padding-right: 0;
   padding-left: 0;

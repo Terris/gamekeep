@@ -44,12 +44,13 @@
   padding: 1rem;
   color: #fff;
   font-size: 2rem;
+  border-radius: 3px;
 }
 .scorepad-btn.scorepad-btn-0 { width: 100%; }
 .scorepad-btn.scorepad-btn-del { background: #929292; }
 .scorepad-btn.scorepad-btn-sign-plus.active,
 .scorepad-btn.scorepad-btn-sign-minus.active {
-  background: #5e7b94;
+  background: #5e6794;
 }
 
 .scorepad-btn:hover {
@@ -66,4 +67,5 @@
   border: 1px solid #000;
   color: #000;
   font-size: 2rem;
+  padding: 1rem 10px
 }

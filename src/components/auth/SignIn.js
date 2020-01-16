@@ -35,7 +35,7 @@ const SignIn = () => {
             type="email"
             name="email"
             id="email"
-            placeholder='Email'
+            placeholder='you@example.com'
             value={email}
             onChange={e => setEmail(e.currentTarget.value)} />
         </div>
@@ -46,7 +46,7 @@ const SignIn = () => {
             label='Password'
             name="password"
             id="password"
-            placeholder='Password'
+            placeholder='&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;'
             value={password}
             onChange={e => setPassword(e.currentTarget.value)} />
         </div>
