@@ -28,17 +28,18 @@ hr { border:none; border-bottom: 1px solid #dcdcdc; margin: 1rem 20px; }
 /* Link
 ------------------------------------ */
 
-a,button { color: #393D52; text-decoration: none; transition: color 0.2s ease; cursor: pointer; }
-a:hover,button:hover { color: #847885; }
+a,button { color: #868686; text-decoration: none; transition: color 0.2s ease; cursor: pointer; }
+a:hover,button:hover { color: #444; }
 
 /* Button
 ------------------------------------ */
 
 button { border: none; outline: none; background: transparent; }
-button.btn { padding: 12px 20px; color: #fff; background: #393D52; border-radius: 3px; transition: background-color 0.2s ease; }
-button.btn:hover { background: #847885; }
+button.btn { padding: 12px 20px; color: #444; background: #fff; border-radius: 3px; border: 2px solid #444; transition: all 0.2s ease; }
+button.btn:hover { color: #fff; background: #444;  }
 button.btn:disabled {
   background: #ccc;
+  color: #ccc;
   cursor: wait;
 }
 
@@ -65,7 +66,7 @@ input[type="text"]:focus,
 input[type="email"]:focus,
 input[type="password"]:focus,
 input[type="number"]:focus {
-  border-bottom: 2px solid #D3A5A3;
+  border-bottom: 2px solid #444;
 }
 /* disabled */
 input[type="text"]:disabled,

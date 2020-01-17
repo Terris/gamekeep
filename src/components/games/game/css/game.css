@@ -12,8 +12,7 @@
 }
 .gameplayercard .gameplayercard-avatar { padding: 0 20px 0 0; }
 .gameplayercard .gameplayercard-score { width: 25%; text-align: right; }
-
-.playerscore { font-size: 2rem; }
+.playerscore { font-size: 1.5rem; }
 .playerscore-total { font-weight: 700; cursor: pointer; }
 .playerscore-scores {
   position: fixed;

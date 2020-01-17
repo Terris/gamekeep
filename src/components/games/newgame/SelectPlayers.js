@@ -22,17 +22,17 @@ const SelectPlayers = ({ dbUser, handleSelection }) => {
   return (
     <div className="selectplayers">
       <h4>Select Players</h4>
-      <ul className="selectplayers-list">
+      <div className="selectplayers-list">
         {friends && friends.map(friend =>
-          <li
+          <div
             key={friend.id}
             className={`selectplayers-list-item ${players.indexOf(friend.friend_id) === -1 ? '' : 'selected'}`}
             onClick={() => selectPlayer(friend.friend_id)}
           >
             <SelectPlayersItem player={friend.friend_id} />
-          </li>
+          </div>
         )}
-      </ul>
+      </div>
     </div>
   )
 }

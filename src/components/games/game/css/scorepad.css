@@ -28,9 +28,7 @@
   flex-wrap: wrap;
   width: 75%;
 }
-.scorepad-numbers .scorepad-btn {
-  width: 33.333333%;
-}
+.scorepad-numbers .scorepad-btn { width: 33.333333%; }
 .scorepad-operations {
   width: 25%;
   display: flex;
@@ -39,26 +37,18 @@
 
 /* scorepad buttons */
 .scorepad-btn {
-  background: #757373;
+  background: #fff;
   border: 1px solid #000;
   padding: 1rem;
-  color: #fff;
+  color: #444;
   font-size: 2rem;
   border-radius: 3px;
 }
 .scorepad-btn.scorepad-btn-0 { width: 100%; }
-.scorepad-btn.scorepad-btn-del { background: #929292; }
 .scorepad-btn.scorepad-btn-sign-plus.active,
-.scorepad-btn.scorepad-btn-sign-minus.active { background: #867683; }
-.scorepad-btn.scorepad-btn-submit { background: #C7AAAE; }
-.scorepad-btn.scorepad-btn-submit:hover { background: #a78c90; }
-.scorepad-btn:hover {
-  color: #fff;
-  background: #696868;
-}
-.scorepad-btn:active {
-  background: #969595;
-}
+.scorepad-btn.scorepad-btn-sign-minus.active { background: #b7b7b7; }
+.scorepad-btn:hover { color: #fff; background: #444; }
+.scorepad-btn:active { background: #ccc; }
 
 /* scorepad input */
 .scorepad-input[type="text"],

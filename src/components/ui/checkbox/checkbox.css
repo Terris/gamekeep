@@ -1,0 +1,22 @@
+.ui-checkbox {
+  position: relative;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid #444;
+  border-radius: 3px;
+}
+.ui-checkbox:after {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: 1px;
+  display: block;
+  width: 16px;
+  height: 7px;
+  transform: rotate(-48deg);
+}
+.ui-checkbox.checked:after {
+  border-left: 2px solid #444;
+  border-bottom: 2px solid #444;
+}

@@ -7,7 +7,7 @@
   cursor: pointer;
   transition: background-color 0.2s ease;
 }
-.gamelistitem:hover { background: #F1E0DE; }
+.gamelistitem:hover { background: #efefef; }
 .gamelistitem .gamelistitem-avatar {
   padding-right: 0;
   padding-left: 0;

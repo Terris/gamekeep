@@ -2,24 +2,14 @@
 
 .alerts-trigger { position: relative; }
 .alerts-trigger-flag:after {
-  content: "";
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 6px;
-  height: 6px;
+  content: "•";
   position: absolute;
   z-index: -1;
-  top: 0;
-  right: -4px;
-  background: #D3A5A3;
-  border-radius: 100%;
-  font-size: 12px;
+  top: -11px;
+  right: -8px;
+  font-size: 21px;
   font-family: monospace;
-  color: #fff;
-  font-style: normal;
 }
-
 
 .alerts .ui-drawer-contents-inner { display: flex; flex-direction: column; }
 .alerts .alert-item {

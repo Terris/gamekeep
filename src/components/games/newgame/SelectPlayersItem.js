@@ -1,6 +1,6 @@
 import React from 'react';
 import { useUser } from '../../user';
-import { Avatar } from '../../ui';
+import { Avatar, Checkbox } from '../../ui';
 
 const SelectPlayersItem = ({ player }) => {
   const { user, loading } = useUser( player );
@@ -12,6 +12,9 @@ const SelectPlayersItem = ({ player }) => {
         <>
           <Avatar user={user} size="small" />
           <span>{user.displayName}</span>
+          <div className="field">
+            <Checkbox initChecked={false} />
+          </div>
         </>
       )}
     </>

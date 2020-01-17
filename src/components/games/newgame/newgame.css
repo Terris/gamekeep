@@ -2,9 +2,15 @@
 .selectplayers-list-item {
   display: flex;
   align-items: center;
-  border: 1px solid #ccc;
   cursor: pointer;
   transition: background-color 0.2s ease;
 }
-.selectplayers-list-item:hover { background: #e2ffe2; }
-.selectplayers-list-item.selected { background: #88c588; }
+.selectplayers-list-item:hover { background: #efefef; }
+.selectplayers-list-item.selected { background: #444; color: #fff; }
+.selectplayers-list-item .field { margin-left: auto; }
+.selectplayers-list-item.selected .ui-checkbox { border: 2px solid #fff; }
+.selectplayers-list-item.selected .ui-checkbox:after,
+.selectplayers-list-item.selected .ui-checkbox.checked:after {
+  border-left: 2px solid #fff;
+  border-bottom: 2px solid #fff;
+}
