@@ -4,14 +4,12 @@ import AddScoreBtn from './AddScoreBtn';
 import { Avatar } from '../../ui';
 
 const GamePlayer = ({ gameId, player }) => (
-  <div className="gameplayercard">
-    <div className="gameplayercard-player">
-      <Avatar key={"avatar-" + player.uid} user={player} size="small" wrapperClass="gameplayercard-avatar" />
+  <div className="gameplayer">
+    <div className="gameplayer-user">
+      <Avatar key={"avatar-" + player.uid} user={player} size="small" wrapperClass="gameplayer-user-avatar" />
       {player.displayName}
     </div>
-    <div className="gameplayercard-score">
-      <GamePlayerScore gameId={gameId} player={player} />
-    </div>
+    <GamePlayerScore gameId={gameId} player={player} />
     <AddScoreBtn gameId={gameId} playerId={player.uid} />
   </div>
 )

@@ -5,7 +5,7 @@ import GamePlayer from './GamePlayer';
 const GamePlayers = ({ gameId, game }) => {
   const { players } = usePlayers(game.players);
   return (
-    <div className="gameplayercards">
+    <div className="gameplayers">
       {!!players && players.map((player, index) =>
         <GamePlayer key={player.uid} gameId={gameId} player={player} />
       )}
