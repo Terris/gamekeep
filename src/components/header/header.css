@@ -32,9 +32,3 @@
 .header .nav-primary .ui-drawer-contents-inner button {
 	border-bottom: 1px solid #dcdcdc;
 }
-
-@media screen and (min-width: 1025px) {
-	.gamelistitem {
-		border-radius: 3px;
-	}
-}
